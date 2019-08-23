@@ -1,0 +1,7 @@
+site_name: CS6332-F2019 
+plugins:
+    - search
+    - awesome-pages
+markdown_extensions:
+    - toc
+    - smarty
