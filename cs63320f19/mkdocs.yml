@@ -11,8 +11,8 @@ plugins:
     - macros
 
 nav:
-    - Home:
-        - 'index.md'
+    # - Home:
+    #      - 'index.md'
     - General: 'general.md'
     - Schedule: 'schedule.md'
     - Papers: 'papers.md'

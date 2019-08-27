@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Course Information - CS6332-F2019</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">CS6332-F2019</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="..">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="./">Course Information</a>
+                            </li>
+                            <li >
+                                <a href="../2schedule/">Schedule</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../resources/papers/">Papers</a>
+</li>
+                                    
+<li >
+    <a href="../resources/tools/">Arsenal</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li >
+                                <a rel="next" href="..">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li >
+                                <a rel="prev" href="../2schedule/">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#course-information">Course Information</a></li>
+            <li><a href="#instructor">Instructor</a></li>
+            <li><a href="#class-meetings">Class meetings</a></li>
+            <li><a href="#course-description">Course Description</a></li>
+            <li><a href="#course-pre-requisites">Course pre-requisites</a></li>
+            <li><a href="#recommended-courses">Recommended courses</a></li>
+            <li><a href="#suggested-texts-readings-materials">Suggested Texts, Readings, &amp; Materials</a></li>
+            <li><a href="#tas">TAs</a></li>
+            <li><a href="#online-discussion">Online discussion</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="course-information">Course Information</h1>
+<h2 id="instructor">Instructor</h2>
+<ul>
+<li>Instructor: Kangkook Jee</li>
+<li>Office ECSS 3.226</li>
+<li>Office hour: 3:00 ~ 4:30 PM Friday</li>
+<li>Course website: http://www.syssec.org/cs6332-F19/</li>
+</ul>
+<h2 id="class-meetings">Class meetings</h2>
+<ul>
+<li>When: F 15:05-17:45 (3:05pm-5:45pm)</li>
+<li>Where: <strong>Room CB3 1.314</strong> in the <a href="https://www.utdallas.edu/locator/?externalKey=LocCB3_1.314">Class Building 3</a></li>
+</ul>
+<h2 id="course-description">Course Description</h2>
+<p>CS 6332 is a graduate-level, research-oriented, systems, and software, security
+class. From the course student will learn initialization process of operating
+system and its subsequent process executions; principles of dynamic and static
+analysis approaches to monitor, analyze, and mitigate both benign and malicious
+programs; various techniques for reverse engineering binaries, bytecodes,
+obfuscated (packed) malware. Lastly, the course will cover the state of the art
+attacks techniques..</p>
+<h3 id="learning-expectations">Learning expectations</h3>
+<p>Through this course, student will learn the basic principles regarding; How
+computer operates in general which includes how it load from BIOS and
+subsequently boots up Operating Systems for a given hard. How it loads programs
+and runs it from the memory space with different execution models such as direct
+and hypervisor-based execution of the binary. The execution of program atop
+language run-times (Python, JVM, Golang, and Rust).</p>
+<p>Based on this understanding students will learn both attack and defense
+technics. Attack techniques: Buffer overflow, Heap overflow, Integer overflow,
+Return-oriented programming, Signal-oriented programming, Packing. Defense and
+analysis techniques: Program obfuscation, Binary randomization, Static and
+dynamic binary analysis. Reverse engineering bytecode and different
+instrumentation techniques for analysis and mitigation purposes.</p>
+<h2 id="course-pre-requisites">Course pre-requisites</h2>
+<p><a href="https://coursebook.utdallas.edu/search/searchresults/CGS/3340/">CS 3340: Computer
+Architecture</a>;
+<a href="https://coursebook.utdallas.edu/search/searchresults/Unix/">CS 3377: C Programming in a UNIX Environment</a>; <a href="https://coursebook.utdallas.edu/search/searchresults/cs4348/">CS
+4348 - Operating Systems Concepts
+</a></p>
+<h2 id="recommended-courses">Recommended courses</h2>
+<p><a href="https://personal.utdallas.edu/~hamlen/cs6301fa19.html">CS 6301: Language-based Security</a>; <a href="">CS 4393: Computer and Network Security</a>;<a href="">CS
+6349.001: Network Security</a></p>
+<h2 id="suggested-texts-readings-materials">Suggested Texts, Readings, &amp; Materials</h2>
+<p>The course has no textbook, but assigned readings from different sources (refer
+to course schedule).
+The followings are recommended readings for the class.</p>
+<ul>
+<li>[AOE] Erickson, Jon. “Hacking: The Art of Exploitation”, 2nd Edition.</li>
+<li>[SRE] Eldad Eilam. “Reversing: Secrets of Reverse Engineering”.</li>
+<li>[CSAPP] Randal E. Bryant and David R. O&rsquo;Hallaron. “Computer Systems: A Programmer&rsquo;s Perspective” 2nd Edition.</li>
+<li>[TSH] Kozoil, Jack. “The Shellcoder&rsquo;s Handbook: Discovering and Exploiting Security Holes”.</li>
+<li>[PPA] Principles in Program Analysis. Springer.</li>
+</ul>
+<h2 id="tas">TAs</h2>
+<ul>
+<li>TA: <strong>[TBD]</strong></li>
+<li>Email: cs6332staff@utdallas.edu</li>
+</ul>
+<h2 id="online-discussion">Online discussion</h2>
+<p>Online discussion is strongly encouraged and it will help you a lot in solving lab problems. Please join <a href="https://piazza.com/utdallas/fall2019/cs6332001">Piazza</a> and post your questions, ideas and thoughts.</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
