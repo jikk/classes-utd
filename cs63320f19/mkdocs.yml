@@ -1,7 +1,14 @@
-site_name: CS6332-F2019 @ UTD 
+site_name: CS6332-F2019 @ UTD
+
+# theme:
+#    name: mkdocs
+#    custom_dir: custom_theme
+
 plugins:
     - search
     - awesome-pages
+    - git-revision-date
+    - macros
 
 nav:
     - Home:
@@ -18,3 +25,8 @@ nav:
 markdown_extensions:
     - toc
     - smarty
+    - admonition
+# macros    
+extra:
+    course:
+        instructor: 'Kangkook Jee'

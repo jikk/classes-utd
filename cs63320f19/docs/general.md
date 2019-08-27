@@ -2,7 +2,7 @@
 
 ## Instructor
 
-* Instructor: Kangkook Jee (`firstname`.`lastname`@utdallas.edu)
+* Instructor: {{ course.instructor }} (`firstname`.`lastname`@utdallas.edu)
 * Office ECSS 3.226
 * Office hour: 3:00 ~ 4:30 PM Friday
 
@@ -76,3 +76,6 @@ The followings are recommended readings for the class.
 ## Online discussion
 
 Online discussion is strongly encouraged and it will help you a lot in solving lab problems. Please join [Piazza](https://piazza.com/utdallas/fall2019/cs6332001) and post your questions, ideas and thoughts.
+
+----
+Page last revised on: {{ git_revision_date }}
