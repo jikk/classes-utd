@@ -1,7 +1,20 @@
-site_name: CS6332-F2019 
+site_name: CS6332-F2019 @ UTD 
 plugins:
     - search
     - awesome-pages
+
+nav:
+    - Home:
+        - 'index.md'
+    - General: 'general.md'
+    - Schedule: 'schedule.md'
+    - Papers: 'papers.md'
+    - Projects: 'projects.md'
+    - Assignments:
+        - Assignments: 'assignments.md'
+        - quizzes: 'quizzes.md'
+    # - Piazza: 'http://www.piazza.com'
+
 markdown_extensions:
     - toc
     - smarty
