@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Course Information - CS6332-F2019</title>
+        <title>General - CS6332-F2019 @ UTD</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -39,32 +39,35 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="..">CS6332-F2019</a>
+                    <a class="navbar-brand" href="..">CS6332-F2019 @ UTD</a>
                 </div>
 
                 <!-- Expanded navigation -->
                 <div class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li >
-                                <a href="..">Home</a>
-                            </li>
                             <li class="active">
-                                <a href="./">Course Information</a>
+                                <a href="./">General</a>
                             </li>
                             <li >
-                                <a href="../2schedule/">Schedule</a>
+                                <a href="../schedule/">Schedule</a>
+                            </li>
+                            <li >
+                                <a href="../papers/">Papers</a>
+                            </li>
+                            <li >
+                                <a href="../projects/">Projects</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assignments <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../resources/papers/">Papers</a>
+    <a href="../assignments/">Assignments</a>
 </li>
                                     
 <li >
-    <a href="../resources/tools/">Arsenal</a>
+    <a href="../quizzes/">quizzes</a>
 </li>
                                 </ul>
                             </li>
@@ -76,13 +79,13 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
-                            <li >
-                                <a rel="next" href="..">
+                            <li class="disabled">
+                                <a rel="next" >
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../2schedule/">
+                                <a rel="prev" href="../schedule/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -96,6 +99,7 @@
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#course-information">Course Information</a></li>
             <li><a href="#instructor">Instructor</a></li>
+            <li><a href="#course-links">Course links</a></li>
             <li><a href="#class-meetings">Class meetings</a></li>
             <li><a href="#course-description">Course Description</a></li>
             <li><a href="#course-pre-requisites">Course pre-requisites</a></li>
@@ -110,37 +114,49 @@
 <h1 id="course-information">Course Information</h1>
 <h2 id="instructor">Instructor</h2>
 <ul>
-<li>Instructor: Kangkook Jee</li>
+<li>Instructor: Kangkook Jee (<code>firstname</code>.<code>lastname</code>@utdallas.edu)</li>
 <li>Office ECSS 3.226</li>
 <li>Office hour: 3:00 ~ 4:30 PM Friday</li>
+</ul>
+<h2 id="course-links">Course links</h2>
+<ul>
 <li>Course website: http://www.syssec.org/cs6332-F19/</li>
+<li>Coursebook: https://coursebook.utdallas.edu/search/cs6332.001.19f</li>
+<li>eLearning: </li>
 </ul>
 <h2 id="class-meetings">Class meetings</h2>
 <ul>
 <li>When: F 15:05-17:45 (3:05pm-5:45pm)</li>
-<li>Where: <strong>Room CB3 1.314</strong> in the <a href="https://www.utdallas.edu/locator/?externalKey=LocCB3_1.314">Class Building 3</a></li>
+<li>Where: <strong><a href="https://www.utdallas.edu/locator/?externalKey=LocECSN_2.120">ECSN 2.120</a></strong> </li>
 </ul>
 <h2 id="course-description">Course Description</h2>
 <p>CS 6332 is a graduate-level, research-oriented, systems, and software, security
-class. From the course student will learn initialization process of operating
-system and its subsequent process executions; principles of dynamic and static
-analysis approaches to monitor, analyze, and mitigate both benign and malicious
-programs; various techniques for reverse engineering binaries, bytecodes,
-obfuscated (packed) malware. Lastly, the course will cover the state of the art
-attacks techniques..</p>
+class. The course mainly focus on security issues on system and software
+programs. Therefore the course will cover</p>
+<ul>
+<li>The basics concepts regarding the system and program,</li>
+<li>Attacker tactics and techniques to take over software systems,</li>
+<li>Countering security measures to monitor, analyze, and mitigate variety sets of security security issues.</li>
+</ul>
 <h3 id="learning-expectations">Learning expectations</h3>
-<p>Through this course, student will learn the basic principles regarding; How
-computer operates in general which includes how it load from BIOS and
-subsequently boots up Operating Systems for a given hard. How it loads programs
-and runs it from the memory space with different execution models such as direct
-and hypervisor-based execution of the binary. The execution of program atop
-language run-times (Python, JVM, Golang, and Rust).</p>
-<p>Based on this understanding students will learn both attack and defense
-technics. Attack techniques: Buffer overflow, Heap overflow, Integer overflow,
-Return-oriented programming, Signal-oriented programming, Packing. Defense and
-analysis techniques: Program obfuscation, Binary randomization, Static and
-dynamic binary analysis. Reverse engineering bytecode and different
-instrumentation techniques for analysis and mitigation purposes.</p>
+<p>Through this course, students will learn</p>
+<ul>
+<li>
+<p>Basics of computer system and software systems with special stress on
+  initialization and its subsequent program executions.</p>
+</li>
+<li>
+<p>Students will learn the variety of attacker tactics and techniques evolve over
+  time to exploit security holes along with counterpart defense mechanisms.</p>
+</li>
+<li>
+<p>Different reverse engineering techniques to monitor, analyze, and mitigate
+  (both benign and malicious) program activities which would include secure system design
+  principles; dynamic and static analysis approaches for different program
+  representation &ndash; source code, binary, compiler IR, and byte-codes; VMM
+  (hypervisor) techniques to instrument runtime process.</p>
+</li>
+</ul>
 <h2 id="course-pre-requisites">Course pre-requisites</h2>
 <p><a href="https://coursebook.utdallas.edu/search/searchresults/CGS/3340/">CS 3340: Computer
 Architecture</a>;
@@ -155,11 +171,11 @@ Architecture</a>;
 to course schedule).
 The followings are recommended readings for the class.</p>
 <ul>
-<li>[AOE] Erickson, Jon. “Hacking: The Art of Exploitation”, 2nd Edition.</li>
-<li>[SRE] Eldad Eilam. “Reversing: Secrets of Reverse Engineering”.</li>
-<li>[CSAPP] Randal E. Bryant and David R. O&rsquo;Hallaron. “Computer Systems: A Programmer&rsquo;s Perspective” 2nd Edition.</li>
-<li>[TSH] Kozoil, Jack. “The Shellcoder&rsquo;s Handbook: Discovering and Exploiting Security Holes”.</li>
-<li>[PPA] Principles in Program Analysis. Springer.</li>
+<li><strong>[AOE]</strong> Erickson, Jon. “Hacking: The Art of Exploitation”, 2nd Edition.</li>
+<li><strong>[SRE]</strong> Eldad Eilam. “Reversing: Secrets of Reverse Engineering”.</li>
+<li><strong>[CSAPP]</strong> Randal E. Bryant and David R. O&rsquo;Hallaron. “Computer Systems: A Programmer&rsquo;s Perspective” 2nd Edition.</li>
+<li><strong>[TSH]</strong> Kozoil, Jack. “The Shellcoder&rsquo;s Handbook: Discovering and Exploiting Security Holes”.</li>
+<li><strong>[PPA]</strong> Principles in Program Analysis. Springer.</li>
 </ul>
 <h2 id="tas">TAs</h2>
 <ul>
@@ -167,7 +183,9 @@ The followings are recommended readings for the class.</p>
 <li>Email: cs6332staff@utdallas.edu</li>
 </ul>
 <h2 id="online-discussion">Online discussion</h2>
-<p>Online discussion is strongly encouraged and it will help you a lot in solving lab problems. Please join <a href="https://piazza.com/utdallas/fall2019/cs6332001">Piazza</a> and post your questions, ideas and thoughts.</p></div>
+<p>Online discussion is strongly encouraged and it will help you a lot in solving lab problems. Please join <a href="https://piazza.com/utdallas/fall2019/cs6332001">Piazza</a> and post your questions, ideas and thoughts.</p>
+<hr />
+<p>Page last revised on: 2019-08-27</p></div>
         </div>
 
         <footer class="col-md-12">
