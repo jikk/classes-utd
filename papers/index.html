@@ -98,8 +98,16 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#reading-list">Reading list</a></li>
+            <li><a href="#control-flow-hijacking">Control Flow Hijacking</a></li>
             <li><a href="#dynamicstatic-analysis-frameworks">Dynamic/Static Analysis Frameworks</a></li>
             <li><a href="#data-flow-tracking-and-data-flow-analysis">Data-flow tracking and Data-flow analysis</a></li>
+            <li><a href="#control-flow-tracking-and-control-flow-analysis">Control-flow tracking and Control-flow analysis</a></li>
+            <li><a href="#evasive-techniques">Evasive techniques</a></li>
+            <li><a href="#news-article">News Article</a></li>
+            <li><a href="#code-obfuscationde-obfuscation">Code obfuscation/de-obfuscation</a></li>
+            <li><a href="#record-and-replay-n-version-systems">Record and replay / N-version systems</a></li>
+            <li><a href="#audit-logging">Audit-logging</a></li>
+            <li><a href="#sandboxingisolation-fault-localization">Sandboxing/isolation, Fault localization</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -113,7 +121,9 @@
     (1) Read Abstract -&gt; Introduction -&gt; Conclusion
     (2) Find and read a motivation (representative) example or case studies. They include a complete (and often realistic) story and how the proposed idea solves the problem with newly proposed methods. </p>
 <hr />
+<h2 id="control-flow-hijacking">Control Flow Hijacking</h2>
 <ul>
+<li><a href="https://ieeexplore.ieee.org/abstract/document/6547101">SoK: Eternal War in Memory</a></li>
 <li><a href="http://phrack.org/issues/49/14.html#article">Smashing the Stack for Fun and Profit</a></li>
 <li><a href="https://web.stanford.edu/~blp/papers/asrandom.pdf">On the effectiveness of Address-Space Randomization</a></li>
 </ul>
@@ -125,72 +135,48 @@
     Transformation [CGO&lsquo;04]</a></li>
 </ul>
 <h2 id="data-flow-tracking-and-data-flow-analysis">Data-flow tracking and Data-flow analysis</h2>
-<pre><code>* libdft: Practical Dynamic Data Flow Tracking for Commodity Systems [VEE'12]
-* A General Approach for Efficiently Accelerating Software-based Dynamic Data Flow Tracking on Commodity Hardware [NDSS'12]
-* LDX: Causality Inference by Lightweight Dual Execution [ASPLOS'16]
-</code></pre>
 <ul>
-<li>
-<p>Control-flow tracking and Control-flow analysis</p>
+<li>libdft: Practical Dynamic Data Flow Tracking for Commodity Systems [VEE&lsquo;12]</li>
+<li>A General Approach for Efficiently Accelerating Software-based Dynamic Data Flow Tracking on Commodity Hardware [NDSS&lsquo;12]</li>
+<li>LDX: Causality Inference by Lightweight Dual Execution [ASPLOS&lsquo;16]</li>
+</ul>
+<h2 id="control-flow-tracking-and-control-flow-analysis">Control-flow tracking and Control-flow analysis</h2>
 <ul>
 <li>Control-Flow Integrity [MSR-TR-05-18]</li>
 <li>Efficient Path Encoding [MICRO&lsquo;96]</li>
 <li>Precise Calling Context Encoding [ICSE&lsquo;10]</li>
 <li>LDX: Causality Inference by Lightweight Dual Execution [ASPLOS&lsquo;16]</li>
 </ul>
-</li>
-<li>
-<p>Evasive techniques</p>
+<h2 id="evasive-techniques">Evasive techniques</h2>
 <ul>
 <li>Evading android runtime analysis via sandbox detection [ASIACCS&lsquo;14]</li>
 <li>Detecting Malware and Sandbox Evasion Techniques [SANS InfoSec Reading Room]</li>
 </ul>
-</li>
-<li>
-<p>News Article</p>
+<h2 id="news-article">News Article</h2>
 <ul>
 <li>X-Force: Force-Executing Binary Programs for Security Applications [USENIX&lsquo;14]</li>
 <li>Revolver: An Automated Approach to the Detection of Evasive Web-based Malware [SP&lsquo;13]</li>
 </ul>
-</li>
-<li>
-<p>Code obfuscation/de-obfuscation</p>
+<h2 id="code-obfuscationde-obfuscation">Code obfuscation/de-obfuscation</h2>
 <ul>
 <li>Deobfuscation of virtualization-obfuscated software: a semantics-based approach [CCS&lsquo;11]</li>
 <li>LOOP: Logic-Oriented Opaque Predicate Detection in Obfuscated Binary Code [CCS&lsquo;15]</li>
 <li>Code obfuscation against symbolic execution attacks [ACSAC&lsquo;16]</li>
 </ul>
-</li>
-<li>
-<p>Record and replay / N-version systems</p>
+<h2 id="record-and-replay-n-version-systems">Record and replay / N-version systems</h2>
 <ul>
 <li>Intrusion recovery using selective re-execution [OSDI&lsquo;10]</li>
 <li>Record and transplay: partial checkpointing for replay debugging across heterogeneous systems [SIGMETRICS&lsquo;11]</li>
 <li>Transparent Mutable Replay for Multicore Debugging and Patch Validation [ASPLOS&lsquo;13]</li>
 <li>Varan the Unbelievable: An Efficient N-version Execution Framework [ASPLOS&lsquo;15]</li>
 </ul>
-</li>
-<li>
-<p>Audit-logging</p>
+<h2 id="audit-logging">Audit-logging</h2>
 <ul>
 <li>High Accuracy Attack Provenance via Binary-Based Execution Partition [NDSS&lsquo;13]</li>
 <li>LogGC: Garbage Collecting Audit Log [CCS&lsquo;13]</li>
 <li>Efficient patch-based auditing for web application vulnerabilities [OSDI&lsquo;12]</li>
 </ul>
-</li>
-<li>
-<p>Web/Browser Security</p>
-<ul>
-<li>The Security Architecture of the Chromium Browser </li>
-<li>UCognito: Private Browsing without Tears [CCS&lsquo;15] </li>
-<li>WebCapsule: Towards a Lightweight Forensic Engine For Web Browsers  [CCS&lsquo;15]</li>
-<li>Riding out DOMsday: Toward Detecting and  Preventing DOM Cross-Site Scripting [NDSS&lsquo;18]</li>
-<li>FlashDetect: ActionScript 3 malware detection [RAID&lsquo;12]</li>
-<li>The Postman Always Rings Twice: Attacking and Defending postMessage in HTML5 Websites [NDSS&lsquo;13]</li>
-</ul>
-</li>
-<li>
-<p>Sandboxing/isolation, Fault localization</p>
+<h2 id="sandboxingisolation-fault-localization">Sandboxing/isolation, Fault localization</h2>
 <ul>
 <li>Native Client: A Sandbox for Portable, Untrusted x86 Native Code [SP&lsquo;09]</li>
 <li>Mobile/IoT Security</li>
@@ -199,16 +185,6 @@
 <li>Fear and Logging in the Internet of Things [NDSS&lsquo;18]</li>
 <li>IoTFuzzer: Discovering Memory Corruptions in IoT Through App-based Fuzzing [NDSS&lsquo;18]</li>
 <li>Sensitive Information Tracking in Commodity IoT [USENIX&lsquo;18]</li>
-</ul>
-</li>
-<li>
-<p>Machine Learning (Added)</p>
-<ul>
-<li>Learning from Mutants: Using Code Mutation to Learn and Monitor Invariants of a Cyber-Physical System </li>
-<li>DeepXplore: Automated Whitebox Testing of Deep Learning Systems</li>
-<li>Towards Deep Learning Models Resistant to Adversarial Attacks</li>
-</ul>
-</li>
 </ul>
 <hr />
 <p>Page last revised on: 2019-08-30</p></div>
