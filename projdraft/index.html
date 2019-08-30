@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Projdraft - CS6332-F2019 @ UTD</title>
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap-3.0.3.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+
+                <!-- Collapsed navigation -->
+                <div class="navbar-header">
+                    <!-- Expander button -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="..">CS6332-F2019 @ UTD</a>
+                </div>
+
+                <!-- Expanded navigation -->
+                <div class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li >
+                                <a href="../general/">General</a>
+                            </li>
+                            <li >
+                                <a href="../schedule/">Schedule</a>
+                            </li>
+                            <li >
+                                <a href="../papers/">Papers</a>
+                            </li>
+                            <li >
+                                <a href="../projects/">Projects</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assignments <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li >
+    <a href="../assignments/">Assignments</a>
+</li>
+                                    
+<li >
+    <a href="../quizzes/">quizzes</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#system-call-level-data-collection-for-behavioral-security-analysis">System call level data collection for behavioral security analysis</a></li>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#project-idea-1-system-call-level-data-collection-framework-for-windows">Project idea 1: System-call level data collection framework for Windows</a></li>
+            <li><a href="#project-idea-2-a-comparision-study-of-different-system-call-data-collection-frameworks">Project idea 2: A comparision study of different system call data collection frameworks</a></li>
+            <li><a href="#project-idea-3-user-level-support-for-process-dns-query-association">Project idea 3: User-level support for process-DNS query association</a></li>
+            <li><a href="#project-idea-4-tpm-leveraged-integrity-and-safety-assurance-for-edge-data-collection-agent">Project idea 4: TPM leveraged Integrity and Safety Assurance for Edge Data Collection Agent</a></li>
+        <li class="main "><a href="#binary-similarity-analysis-to-detect-supply-chain-attack">Binary Similarity Analysis to Detect Supply Chain Attack</a></li>
+            <li><a href="#project-steps">Project steps</a></li>
+            <li><a href="#references">References</a></li>
+        <li class="main "><a href="#edge-tpu-related-project">Edge TPU related project</a></li>
+            <li><a href="#project-idea-1-security-application-using-edge-tpu">Project idea 1: Security application using Edge-TPU</a></li>
+            <li><a href="#project-idea-2-protecting-assets-from-edge-tpu">Project idea 2: Protecting assets from Edge-TPU</a></li>
+        <li class="main "><a href="#improvement-for-automated-large-scale-malware-analysis-study">Improvement for Automated Large-scale Malware Analysis Study</a></li>
+            <li><a href="#references_1">References</a></li>
+        <li class="main "><a href="#implementation-of-advanced-persitent-threat-apt-framework-for-security-evaluation">Implementation of Advanced Persitent Threat (APT) framework for Security Evaluation</a></li>
+            <li><a href="#references_2">References</a></li>
+        <li class="main "><a href="#steganography-or-image-forensics-analysis-and-defense-for-malcious-payload-embedded-documentation">Steganography or image forensics -- Analysis and defense for malcious payload embedded documentation</a></li>
+        <li class="main "><a href="#comparsion-of-process-level-instrumentation-approachs-virtualization">Comparsion of process-level instrumentation approachs virtualization</a></li>
+            <li><a href="#resources">Resources</a></li>
+        <li class="main "><a href="#automated-ioc-processing-to-produce-actionable-security-rules">Automated IOC processing to produce actionable security rules</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<hr />
+<h2 id="system-call-level-data-collection-for-behavioral-security-analysis">System call level data collection for behavioral security analysis</h2>
+<h3 id="motivation">Motivation</h3>
+<ul>
+<li>
+<p>In implementing in-host (vs. out-host or network) security measures efficient and reliable source for data collection is an essential building block.</p>
+</li>
+<li>
+<p>While different design choices are available in terms of monitoring granularities, system call level monitoring seems to be reasonable compromise consideration in terms of performance overhead and monitoring accuracy (granularity). Many existing in-host monitoring solutions choose a subset of system calls to capture, monitor and report for security analysis. </p>
+</li>
+<li>
+<p>Can we implement a better data collection for system call tracing?</p>
+</li>
+<li>
+<p>Leveraging the existing system call collection mechanisms (say sysdig, or dtrace, linux audit), how much overhead that we expect? can we collect and </p>
+</li>
+<li>
+<p>This area is in large demand and can spun into a number of different research directions. </p>
+</li>
+</ul>
+<h3 id="project-idea-1-system-call-level-data-collection-framework-for-windows">Project idea 1: System-call level data collection framework for Windows</h3>
+<ul>
+<li>
+<p>A number of existing implementation exists for Linux systems (Linux Audit, OSX DTrace, Sysdig project), but not many implementation exists for Windows operating systems. </p>
+</li>
+<li>
+<p>The main purpose of the project will be implementing MS Windows version of system call level data collection framework. Students will study and investigate a cadidate data source <a href="">ETW (Event Tracing for Windows)</a>. </p>
+</li>
+<li>
+<p>Students with previous experience MS Windows system programming may find this project interesting. </p>
+</li>
+</ul>
+<h3 id="project-idea-2-a-comparision-study-of-different-system-call-data-collection-frameworks">Project idea 2: A comparision study of different system call data collection frameworks</h3>
+<ul>
+<li>
+<p>We it is previously mentioned, we have different data collection sources (Linux Audit, Sysdig, DTrace &hellip;) that can run on a same system (say Linux). Students can try to build a same data collection framework for leveraging different mechanisms to  compare the efficency and capability. </p>
+</li>
+<li>
+<p>Project can start by </p>
+<ul>
+<li>Data collection implemented/configured to collection the same subset of system calls (e.g., read(), write(), exec(), fork(), send(), recve()) and run those against standardized workload (e.g., benchmark suites and workloads). </li>
+</ul>
+</li>
+</ul>
+<h3 id="project-idea-3-user-level-support-for-process-dns-query-association">Project idea 3: User-level support for process-DNS query association</h3>
+<ul>
+<li>
+<p>Besides system call entries which can be obtained by the above mentioned data sources, we have other interested system events with higher/more security implications worth collected and analyzed. DNS is one of those information, traditionally collected from outside the host, only to associated to the host level without having the finer association with regard to a process which process actually initiated the DNS query of our interestes. </p>
+</li>
+<li>
+<p>A previous of previous proposal exists leveraging kernel level association or system interfaces. These turn out to be too intrusive enforcing users to kernel modules or to be subject to unexpected changes of system implementation.</p>
+</li>
+<li>
+<p>The project will implement the process-DNS association much lighter fashion without loosing/sacrifing the accuracy, but associating and cor-relating network system call (i.e., send(), recv()) and PCAP data.</p>
+</li>
+<li>
+<p>With this project aim to bridge the gap between two different domains of network and system security. </p>
+</li>
+</ul>
+<h3 id="project-idea-4-tpm-leveraged-integrity-and-safety-assurance-for-edge-data-collection-agent">Project idea 4: TPM leveraged Integrity and Safety Assurance for Edge Data Collection Agent</h3>
+<ul>
+<li>
+<p>In implementing host-based security solutions, the guarantee for integrity of data collection agent and trustworthiness of its report have  always been a challenging problem. For instance, the security analyst from Security Operation Center (SoC) does not have many options to confirm reports from end-devices (e.g., computers, servers, IoT devices) are indeed genunie (uncompromised). </p>
+</li>
+<li>
+<p>In this project, we want to leverage the hardware encoded security to build a root of trust for end-host security monitoring agents and confirm the authenticity and integrity of its status and messages it is reporting.</p>
+</li>
+<li>
+<p>From the project, students will </p>
+<ul>
+<li>Investigate and study threat model for end-host security agent.</li>
+<li>Inverstigate the capability and limitation of generally used TPM devices.</li>
+<li>Design and propose different level of security design and their trade-offs.</li>
+<li>Build prototype for TPM leveraged data collection agent </li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="binary-similarity-analysis-to-detect-supply-chain-attack">Binary Similarity Analysis to Detect Supply Chain Attack</h2>
+<ul>
+<li>Newly updated programs may contain security backdoor. </li>
+<li>Without source code in hand can we measure the difference and specify the changes made to the code?</li>
+<li>Students can compare binaries of different versions program analysis representation such Control-Flow Graph (CFG), Function call graph. </li>
+<li>Such feature may provide an important and useful primitive detecting and mitigating the latest threats such as <a href="https://arstechnica.com/information-technology/2019/08/the-year-long-rash-of-supply-chain-attacks-against-open-source-is-getting-worse/">supply-chain-attacks</a>. <ul>
+<li>Many different ways for such attacks to be implanted to a public and well-trusted sources. </li>
+<li>The software vendor may implant attack vectors to get capabilities beyond its users expectation pretending it to be as a mere functionality extension.</li>
+<li>Or the active attacker plays a hat of open source programer and contribute to a widely adopted projects pretending to be a simple functionality extensions. </li>
+</ul>
+</li>
+</ul>
+<h3 id="project-steps">Project steps</h3>
+<ol>
+<li>Literature survey</li>
+<li>Impelement your own prototype example<ul>
+<li>Choose a not-to-big but interesting open source project</li>
+<li>Build the source to produce a bianry. </li>
+<li>Extract program representation against the binary.</li>
+</ul>
+</li>
+<li>Inject a threat vector(e.g., simple backdoor)<ul>
+<li>Build the source to produce a bianry. </li>
+<li>Extract program representation against the binary.</li>
+</ul>
+</li>
+<li>Compare two representations to confirm your approach.</li>
+<li>Apply your approach to real softwares<ul>
+<li>You can test your approach with ....</li>
+</ul>
+</li>
+</ol>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://users.ece.cmu.edu/~jiyongj/papers/usenixsec13.pdf">Towards Automatic Software Lineage Inference</a><ul>
+<li>Usenix Security 2013</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="edge-tpu-related-project">Edge TPU related project</h2>
+<ul>
+<li>
+<p>Google and Nvidia deployed edge-based computing devices for accelerating machine learning workloads. </p>
+<ul>
+<li><a href="">Nvidia Jetson nano</a></li>
+<li><a href="">Google Edge TPU processing board</a></li>
+</ul>
+</li>
+<li>
+<p>The motivation behind the direction is to offload expensive tasks of data transfer to the cloud and processing to on-the-spot edge devices.</p>
+</li>
+<li>
+<p>While this open a new computational model and further facilitates new usage cases with the various applications based on accelerated ML support on-the-fly, at the same time it can also bring new security landscapes eitherproviding new ways of implementing security task or exposing new attack surface for the adversaries can aim to take over.</p>
+</li>
+</ul>
+<h3 id="project-idea-1-security-application-using-edge-tpu">Project idea 1: Security application using Edge-TPU</h3>
+<ul>
+<li>With new device and its new capability, students can be wild and creative to propose a new security application. </li>
+<li>Note that image and video at the edge devices (similar size of Raspberry Pi board) will have much larger throughout and performed much faster.</li>
+</ul>
+<h3 id="project-idea-2-protecting-assets-from-edge-tpu">Project idea 2: Protecting assets from Edge-TPU</h3>
+<ul>
+<li>With new edge device, important intellectual assets such as Prediction Model needs to be offloaded and transferred to each edge devices. </li>
+<li>For the portablity nature of Edge device, adversary can easily obtain devices phsycally or over the network. </li>
+<li>For the project, students can think of ways to prevent such assets from being taken over by the adversary. </li>
+<li>Students needs to consider both runtime and offline aspects. </li>
+<li>Note that CPU components of the devices by default <a href="">Trustzone</a> featuress. </li>
+</ul>
+<hr />
+<h2 id="improvement-for-automated-large-scale-malware-analysis-study">Improvement for Automated Large-scale Malware Analysis Study</h2>
+<p>Recently, we observe millions of allegedly payloads are found and reported daily and this phenomenon pushes the task of manual investigation and analysis nearly infeasilble. Industry and academia together have proposed and worked on automated framework to scale process and analyze malware payloads by implemented automated security sandbox for security and malware analysis. Yet, such proposal has improved the status, we as a community yet to see many pitfalls and limitation in replaying malware and capture the essence of malicious behavior. From this project, students will perform the following tasks.</p>
+<ul>
+<li>
+<p>First implement one of the most well-known <a href="https://www.cuckoo.org">opensource sandbox for malware analysis</a>. </p>
+</li>
+<li>
+<p>Write behavioral signature by extending a Cuckoo community API to better judge whethter a given payload is indeed malicous thus require further investigation.</p>
+</li>
+<li>
+<p>Investigate different techniques (Anti-VM, Anti-Debug) that give malware writers employs to probes the sandbox execution to silencing any of malicious behaviors, thus can remain undetected/undiscovered by the analysis.</p>
+</li>
+<li>
+<p>For a given malware payload, extend the sandbox framework by implementing functionalities to spot anti-debugging techinques and find a way to go around it.</p>
+</li>
+</ul>
+<h3 id="references_1">References</h3>
+<ul>
+<li><a href="">Cuckoo Sandbox</a></li>
+<li><a href="">Cuckoo Community</a></li>
+<li><a href="https://securitee.org/files/wearntear-oakland2017.pdf">Spotless Sandboxes: Evading Malware Analysis Systems using Wear-and-Tear Artifacts</a></li>
+</ul>
+<hr />
+<h2 id="implementation-of-advanced-persitent-threat-apt-framework-for-security-evaluation">Implementation of Advanced Persitent Threat (APT) framework for Security Evaluation</h2>
+<p>More research and industry together focuses on Advanced Persistent Threat (APT) designed and launched by nation-level threat actors. Different approaches to monitor, analyze, and mitigate such attacks are proposed. However, research and industry together lacks in framework level support for testing and confirm their effectiveness in protecting valuable assets against such attempts. In this project, students will</p>
+<ul>
+<li>First, perform a literature research APT attacks.</li>
+<li>Build a mini-lab environment that would emulate a real-world enterprise environment.</li>
+<li>Implement and document a number of APT cases </li>
+</ul>
+<h3 id="references_2">References</h3>
+<ul>
+<li>APT Notes - Github project: <a href="https://github.com/aptnotes/data">new repo</a>, <a href="https://github.com/kbandla/APTnotes">old repo</a></li>
+<li><a href="">APT3 scenario by MITRE</a></li>
+</ul>
+<hr />
+<h2 id="steganography-or-image-forensics-analysis-and-defense-for-malcious-payload-embedded-documentation">Steganography or image forensics &ndash; Analysis and defense for malcious payload embedded documentation</h2>
+<p>Steganography has been an effective techinques for the hacker community in embedding different types of malcious payloads into seemingly benign document to evade security detection measures. This provides attacker easy way to propagated their malicious payloads yet remain undetected by any security measure. When you see any databases or public resources for malware collections, you realizes malware-embedded documents now take majority. </p>
+<ul>
+<li><a href="https://zeltser.com/analyzing-malicious-documents/">Analyzing Malicious Documents Cheat Sheet</a></li>
+<li>https://www.youtube.com/watch?v=np0mPy-EHII</li>
+<li><a href="https://securityintelligence.com/steganography-a-safe-haven-for-malware/">Steganography: A Safe Haven for Malware</a></li>
+<li>https://books.google.com/books?hl=en&amp;lr=&amp;id=qMB9AiFUWF0C&amp;oi=fnd&amp;pg=PP1&amp;ots=glBaUv19cd&amp;sig=VrUI34kRvs67Lf7r7EMHNRbBtz0</li>
+<li><a href="https://dl.acm.org/citation.cfm?id=1774427">&lsquo;Dresden Image Database&rsquo; for benchmarking digital image forensics</a></li>
+</ul>
+<h2 id="comparsion-of-process-level-instrumentation-approachs-virtualization">Comparsion of process-level instrumentation approachs virtualization</h2>
+<ul>
+<li>
+<p>As our course proceeds, we will learn a number of different choices in instrumenting software program to introspect process and system internals at runtime. The one can leverage such frameworks to monitor, analyze, and mitigate process and system activities. </p>
+<ul>
+<li>Instrumentation frameworks<ul>
+<li>Binary re-writing: <a href="">DynInst</a></li>
+<li>Process-level: <a href="">PIN</a>, <a href="">Valgrind</a>, <a href="">DynamoRIO</a></li>
+<li>System-level: <a href="">QEmu</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>While we have different options and frameworks in implemening such meastures, design options and its trade-offs are not fully explored by the literatures.</p>
+</li>
+<li>
+<p>For this project, students will</p>
+<ul>
+<li>First, study and understand different instrumentation frameworks</li>
+<li>Implement security/program analysis using the framework<ul>
+<li>E.g., Control Flow Graph generator</li>
+</ul>
+</li>
+<li>Define a standard workload to run and measure overhead, and usability.</li>
+</ul>
+</li>
+</ul>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="">Pin project</a>, <a href="">Pin paper</a></li>
+<li><a href="">DynamoRio project</a>, <a href="">DynamoRio paper</a></li>
+<li><a href="">Valgrind project</a>, <a href="">Valgrind paper</a></li>
+<li><a href="">QEmu project</a>, <a href="">QEmu paper</a></li>
+<li><a href="">DynInst project</a>, <a href="">DynInst paper</a></li>
+</ul>
+<h2 id="automated-ioc-processing-to-produce-actionable-security-rules">Automated IOC processing to produce actionable security rules</h2>
+<p><em>Indicator of Compromise (IOC)</em> indicates an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. While IOC transforms the game security by cultivating the smooth exchange of security indicators. To further facilitates security information exchange by addressing the complexity and hectic nature of such security information that we have observed with the existing protocol (e.g., <a href="">Yara rules</a>),  a number of different standards are proposed and work on progress (<a href="">STIX</a>, <a href="">TAXI</a>). While these proposals attempt to address large portion of problem domain, still we have non-negligible rooms remain for improvements, for instance, many of important security IOCs are posted in a hard to parse not confirming to Internet standard. For instance, many security analysis are written in a plain English in a form of technical report, whitepaper, or blog postings. </p>
+<p>From this project, student will attempts to parse malformed security indicators into STIX or TAXI conpatiable formation, so as it can be properly translated into standard IOC format and further circulated.  </p>
+<hr />
+<p>Page last revised on: 2019-08-30</p></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="Keyboard Shortcuts Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Keyboard Shortcuts</h4>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

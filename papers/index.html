@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Schedule - CS6332-F2019</title>
+        <title>Papers - CS6332-F2019 @ UTD</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -39,7 +39,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="..">CS6332-F2019</a>
+                    <a class="navbar-brand" href="..">CS6332-F2019 @ UTD</a>
                 </div>
 
                 <!-- Expanded navigation -->
@@ -47,24 +47,27 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li >
-                                <a href="..">Home</a>
+                                <a href="../general/">General</a>
                             </li>
                             <li >
-                                <a href="../1general/">Course Information</a>
+                                <a href="../schedule/">Schedule</a>
                             </li>
                             <li class="active">
-                                <a href="./">Schedule</a>
+                                <a href="./">Papers</a>
+                            </li>
+                            <li >
+                                <a href="../projects/">Projects</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assignments <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../resources/papers/">Papers</a>
+    <a href="../assignments/">Assignments</a>
 </li>
                                     
 <li >
-    <a href="../resources/tools/">Arsenal</a>
+    <a href="../quizzes/">quizzes</a>
 </li>
                                 </ul>
                             </li>
@@ -77,12 +80,12 @@
                             </a>
                         </li>
                             <li >
-                                <a rel="next" href="../1general/">
+                                <a rel="next" href="../schedule/">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li >
-                                <a rel="prev" href="../resources/papers/">
+                                <a rel="prev" href="../projects/">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -94,13 +97,121 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#schedule">Schedule</a></li>
+        <li class="main active"><a href="#reading-list">Reading list</a></li>
+            <li><a href="#dynamicstatic-analysis-frameworks">Dynamic/Static Analysis Frameworks</a></li>
+            <li><a href="#data-flow-tracking-and-data-flow-analysis">Data-flow tracking and Data-flow analysis</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="schedule">Schedule</h1>
-<p><strong>[TBD]</strong></p></div>
+<h1 id="reading-list">Reading list</h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p><a href="https://medium.com/ai-saturdays/how-to-read-academic-papers-without-freaking-out-3f7ef43a070f">How to read academic papers</a></p>
+<p>Particularly for systems security papers: 
+    (1) Read Abstract -&gt; Introduction -&gt; Conclusion
+    (2) Find and read a motivation (representative) example or case studies. They include a complete (and often realistic) story and how the proposed idea solves the problem with newly proposed methods. </p>
+<hr />
+<ul>
+<li><a href="http://phrack.org/issues/49/14.html#article">Smashing the Stack for Fun and Profit</a></li>
+<li><a href="https://web.stanford.edu/~blp/papers/asrandom.pdf">On the effectiveness of Address-Space Randomization</a></li>
+</ul>
+<h2 id="dynamicstatic-analysis-frameworks">Dynamic/Static Analysis Frameworks</h2>
+<ul>
+<li><a href="">Pin: building customized program analysis tools with dynamic instrumentation [PLDI&lsquo;05]</a></li>
+<li><a href="">Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation [PLDI&lsquo;07]</a></li>
+<li><a href="">LLVM: A Compilation Framework for Lifelong Program Analysis &amp;
+    Transformation [CGO&lsquo;04]</a></li>
+</ul>
+<h2 id="data-flow-tracking-and-data-flow-analysis">Data-flow tracking and Data-flow analysis</h2>
+<pre><code>* libdft: Practical Dynamic Data Flow Tracking for Commodity Systems [VEE'12]
+* A General Approach for Efficiently Accelerating Software-based Dynamic Data Flow Tracking on Commodity Hardware [NDSS'12]
+* LDX: Causality Inference by Lightweight Dual Execution [ASPLOS'16]
+</code></pre>
+<ul>
+<li>
+<p>Control-flow tracking and Control-flow analysis</p>
+<ul>
+<li>Control-Flow Integrity [MSR-TR-05-18]</li>
+<li>Efficient Path Encoding [MICRO&lsquo;96]</li>
+<li>Precise Calling Context Encoding [ICSE&lsquo;10]</li>
+<li>LDX: Causality Inference by Lightweight Dual Execution [ASPLOS&lsquo;16]</li>
+</ul>
+</li>
+<li>
+<p>Evasive techniques</p>
+<ul>
+<li>Evading android runtime analysis via sandbox detection [ASIACCS&lsquo;14]</li>
+<li>Detecting Malware and Sandbox Evasion Techniques [SANS InfoSec Reading Room]</li>
+</ul>
+</li>
+<li>
+<p>News Article</p>
+<ul>
+<li>X-Force: Force-Executing Binary Programs for Security Applications [USENIX&lsquo;14]</li>
+<li>Revolver: An Automated Approach to the Detection of Evasive Web-based Malware [SP&lsquo;13]</li>
+</ul>
+</li>
+<li>
+<p>Code obfuscation/de-obfuscation</p>
+<ul>
+<li>Deobfuscation of virtualization-obfuscated software: a semantics-based approach [CCS&lsquo;11]</li>
+<li>LOOP: Logic-Oriented Opaque Predicate Detection in Obfuscated Binary Code [CCS&lsquo;15]</li>
+<li>Code obfuscation against symbolic execution attacks [ACSAC&lsquo;16]</li>
+</ul>
+</li>
+<li>
+<p>Record and replay / N-version systems</p>
+<ul>
+<li>Intrusion recovery using selective re-execution [OSDI&lsquo;10]</li>
+<li>Record and transplay: partial checkpointing for replay debugging across heterogeneous systems [SIGMETRICS&lsquo;11]</li>
+<li>Transparent Mutable Replay for Multicore Debugging and Patch Validation [ASPLOS&lsquo;13]</li>
+<li>Varan the Unbelievable: An Efficient N-version Execution Framework [ASPLOS&lsquo;15]</li>
+</ul>
+</li>
+<li>
+<p>Audit-logging</p>
+<ul>
+<li>High Accuracy Attack Provenance via Binary-Based Execution Partition [NDSS&lsquo;13]</li>
+<li>LogGC: Garbage Collecting Audit Log [CCS&lsquo;13]</li>
+<li>Efficient patch-based auditing for web application vulnerabilities [OSDI&lsquo;12]</li>
+</ul>
+</li>
+<li>
+<p>Web/Browser Security</p>
+<ul>
+<li>The Security Architecture of the Chromium Browser </li>
+<li>UCognito: Private Browsing without Tears [CCS&lsquo;15] </li>
+<li>WebCapsule: Towards a Lightweight Forensic Engine For Web Browsers  [CCS&lsquo;15]</li>
+<li>Riding out DOMsday: Toward Detecting and  Preventing DOM Cross-Site Scripting [NDSS&lsquo;18]</li>
+<li>FlashDetect: ActionScript 3 malware detection [RAID&lsquo;12]</li>
+<li>The Postman Always Rings Twice: Attacking and Defending postMessage in HTML5 Websites [NDSS&lsquo;13]</li>
+</ul>
+</li>
+<li>
+<p>Sandboxing/isolation, Fault localization</p>
+<ul>
+<li>Native Client: A Sandbox for Portable, Untrusted x86 Native Code [SP&lsquo;09]</li>
+<li>Mobile/IoT Security</li>
+<li>iRiS: Vetting Private API Abuse in iOS Applications [CCS&lsquo;15]</li>
+<li>GUITAR: Piecing Together Android App GUIs from Memory Images. [CCS&lsquo;15]</li>
+<li>Fear and Logging in the Internet of Things [NDSS&lsquo;18]</li>
+<li>IoTFuzzer: Discovering Memory Corruptions in IoT Through App-based Fuzzing [NDSS&lsquo;18]</li>
+<li>Sensitive Information Tracking in Commodity IoT [USENIX&lsquo;18]</li>
+</ul>
+</li>
+<li>
+<p>Machine Learning (Added)</p>
+<ul>
+<li>Learning from Mutants: Using Code Mutation to Learn and Monitor Invariants of a Cyber-Physical System </li>
+<li>DeepXplore: Automated Whitebox Testing of Deep Learning Systems</li>
+<li>Towards Deep Learning Models Resistant to Adversarial Attacks</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Page last revised on: 2019-08-30</p></div>
         </div>
 
         <footer class="col-md-12">
