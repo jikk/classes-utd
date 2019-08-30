@@ -1,18 +1,25 @@
-# Paper list
+# Reading list
 
-[How to read academic papers](https://medium.com/ai-saturdays/how-to-read-academic-papers-without-freaking-out-3f7ef43a070f)
+!!! Note
+   [How to read academic papers](https://medium.com/ai-saturdays/how-to-read-academic-papers-without-freaking-out-3f7ef43a070f)
 
-Particularly for systems security papers: (1) Read Abstract -> Introduction -> Conclusion, (2) Find and read a motivation (representative) example or case studies. They include a complete (and often realistic) story and how the proposed idea solves the problem with newly proposed methods. 
+Particularly for systems security papers: 
+    (1) Read Abstract -> Introduction -> Conclusion
+    (2) Find and read a motivation (representative) example or case studies. They include a complete (and often realistic) story and how the proposed idea solves the problem with newly proposed methods. 
 
+---
 
-* Dynamic/Static Analysis Frameworks. 
+* [Smashing the Stack for Fun and Profit](http://phrack.org/issues/49/14.html#article)
+* [On the effectiveness of Address-Space Randomization](https://web.stanford.edu/~blp/papers/asrandom.pdf)
 
-    * Pin: building customized program analysis tools with dynamic instrumentation [PLDI'05]
-    * Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation [PLDI'07]
-    * LLVM: A Compilation Framework for Lifelong Program Analysis &
-      Transformation [CGO'04]
+## Dynamic/Static Analysis Frameworks
 
-* Data-flow tracking and Data-flow analysis
+* [Pin: building customized program analysis tools with dynamic instrumentation [PLDI'05]]()
+* [Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation [PLDI'07]]()
+* [LLVM: A Compilation Framework for Lifelong Program Analysis &
+    Transformation [CGO'04]]()
+
+## Data-flow tracking and Data-flow analysis
     * libdft: Practical Dynamic Data Flow Tracking for Commodity Systems [VEE'12]
     * A General Approach for Efficiently Accelerating Software-based Dynamic Data Flow Tracking on Commodity Hardware [NDSS'12]
     * LDX: Causality Inference by Lightweight Dual Execution [ASPLOS'16]
