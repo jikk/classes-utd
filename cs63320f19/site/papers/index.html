@@ -58,19 +58,6 @@
                             <li >
                                 <a href="../projects/">Projects</a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assignments <b class="caret"></b></a>
-                                <ul class="dropdown-menu">
-                                    
-<li >
-    <a href="../assignments/">Assignments</a>
-</li>
-                                    
-<li >
-    <a href="../quizzes/">quizzes</a>
-</li>
-                                </ul>
-                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -98,16 +85,21 @@
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="main active"><a href="#reading-list">Reading list</a></li>
-            <li><a href="#control-flow-hijacking">Control Flow Hijacking</a></li>
+            <li><a href="#memory-corruption-and-control-flow-hijacking">Memory Corruption and Control Flow Hijacking</a></li>
+            <li><a href="#rop-attacks">ROP Attacks</a></li>
+            <li><a href="#control-flow-and-code-pointer-integrity">Control Flow and Code Pointer Integrity</a></li>
+            <li><a href="#more-binary-attack-and-defenses">More Binary Attack and Defenses</a></li>
             <li><a href="#dynamicstatic-analysis-frameworks">Dynamic/Static Analysis Frameworks</a></li>
-            <li><a href="#data-flow-tracking-and-data-flow-analysis">Data-flow tracking and Data-flow analysis</a></li>
-            <li><a href="#control-flow-tracking-and-control-flow-analysis">Control-flow tracking and Control-flow analysis</a></li>
-            <li><a href="#evasive-techniques">Evasive techniques</a></li>
-            <li><a href="#news-article">News Article</a></li>
-            <li><a href="#code-obfuscationde-obfuscation">Code obfuscation/de-obfuscation</a></li>
-            <li><a href="#record-and-replay-n-version-systems">Record and replay / N-version systems</a></li>
-            <li><a href="#audit-logging">Audit-logging</a></li>
-            <li><a href="#sandboxingisolation-fault-localization">Sandboxing/isolation, Fault localization</a></li>
+            <li><a href="#dynamic-analysis">Dynamic Analysis</a></li>
+            <li><a href="#static-analysis">Static Analysis</a></li>
+            <li><a href="#symbolic-execution">Symbolic Execution</a></li>
+            <li><a href="#virtualization-and-security">Virtualization and Security</a></li>
+            <li><a href="#kernel-security">Kernel security</a></li>
+            <li><a href="#sandboxing-isolation-and-fault-localization">Sandboxing: Isolation, and Fault localization</a></li>
+            <li><a href="#iot-and-cps-security">IoT and CPS Security</a></li>
+            <li><a href="#threat-intelligence-computing">Threat Intelligence Computing</a></li>
+            <li><a href="#audit-logging-and-provenance-analysis">Audit-logging and Provenance Analysis</a></li>
+            <li><a href="#hardwares">Hardwares</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -115,79 +107,184 @@
 <h1 id="reading-list">Reading list</h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
+<p>Particularly for systems security papers:</p>
+<p>(1) Read Abstract &rarr; Introduction &rarr; Conclusion.</p>
+<p>(2) Find and read a motivation (representative) example or case studies. They include a complete (and often realistic) story and how the proposed idea solves the problem with newly proposed methods.</p>
+<p><strong>TIP</strong>: <a href="https://medium.com/ai-saturdays/how-to-read-academic-papers-without-freaking-out-3f7ef43a070f">How to read academic papers</a></p>
 </div>
-<p><a href="https://medium.com/ai-saturdays/how-to-read-academic-papers-without-freaking-out-3f7ef43a070f">How to read academic papers</a></p>
-<p>Particularly for systems security papers: 
-    (1) Read Abstract -&gt; Introduction -&gt; Conclusion
-    (2) Find and read a motivation (representative) example or case studies. They include a complete (and often realistic) story and how the proposed idea solves the problem with newly proposed methods. </p>
 <hr />
-<h2 id="control-flow-hijacking">Control Flow Hijacking</h2>
+<!-- 
+## Sources
+
+* [VPK](https://cs.brown.edu/courses/csci2951-u/lectures.html#l01)
+* [Suman seminar course](http://www.cs.columbia.edu/~suman/coms_e6183.html)
+* [Taesoo Kim seminar course](https://tc.gts3.org/cs8803/2014/cal.html)
+* [Suman system security course](http://www.cs.columbia.edu/~suman/security_1.html)
+* [Youngjin Jang - seminar course](https://syssec-s18.unexploitable.systems/cal.html)
+* [Mu Zhang seminar course](https://sites.google.com/site/muzhang82/cs6956-001-2019fall)
+-->
+
+<h2 id="memory-corruption-and-control-flow-hijacking">Memory Corruption and Control Flow Hijacking</h2>
 <ul>
 <li><a href="https://ieeexplore.ieee.org/abstract/document/6547101">SoK: Eternal War in Memory</a></li>
+<li><strong>Smashing the Stack</strong>: Read the following two articles<ul>
 <li><a href="http://phrack.org/issues/49/14.html#article">Smashing the Stack for Fun and Profit</a></li>
-<li><a href="https://web.stanford.edu/~blp/papers/asrandom.pdf">On the effectiveness of Address-Space Randomization</a></li>
+<li><a href="https://paulmakowski.wordpress.com/2011/01/25/smashing-the-stack-in-2011/">Smashing the Stack in 2011</a></li>
+</ul>
+</li>
+<li><a href="https://web.stanford.edu/~blp/papers/asrandom.pdf">On the effectiveness of Address-Space Randomization</a> [CCS 04]</li>
+</ul>
+<h2 id="rop-attacks">ROP Attacks</h2>
+<ul>
+<li><a href="https://dl.acm.org/citation.cfm?id=2133377">Return-Oriented Programming: Systems, Languages, and Applications</a> [TISSEC 12]</li>
+<li><a href="https://dl.acm.org/citation.cfm?id=1866370">Return-oriented programming without returns</a> [CCS 12]</li>
+<li><a href="https://www.infsec.cs.uni-saarland.de/wp-content/uploads/sites/2/2014/10/nuernberger2014ccs_disclosure.pdf">You Can Run but You Can&rsquo;t Read: Preventing Disclosure Exploits in Executable Code</a> [CCS 14]</li>
+<li><a href="https://www.ics.uci.edu/~sjcrane/papers/sjcrane15_readactor.pdf">Readactor: Practical Code Randomization Resilient to Memory Disclosure</a> [SP 15]</li>
+</ul>
+<h2 id="control-flow-and-code-pointer-integrity">Control Flow and Code Pointer Integrity</h2>
+<ul>
+<li><a href="https://dl.acm.org/citation.cfm?id=1102165">Control-Flow Integrity</a> [CCS 05]</li>
+<li><a href="https://www.usenix.org/node/174767">Control Flow Integrity for COTS Binaries</a> [SEC 13]</li>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week03/cpi.pdf">Code-Pointer Integrity</a> [OSDI 2014]</li>
+</ul>
+<h2 id="more-binary-attack-and-defenses">More Binary Attack and Defenses</h2>
+<h3 id="advanced-attacks">Advanced Attacks</h3>
+<ul>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week03/srop.pdf">Framing Signals—A Return to Portable Shellcode</a></li>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week04/apisan.pdf">APISAn: Sanitizing API Usages through Semantic Cross-Checking</a></li>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week04/angrSoK.pdf">(State of) The Art of War: Offensive Techniques in Binary Analysis</a></li>
+</ul>
+<h3 id="integer-vulnerabilities-and-defenses">Integer Vulnerabilities and Defenses</h3>
+<ul>
+<li><a href="http://www.cs.utah.edu/~regehr/papers/overflow12.pdf">Understanding Integer Overflow in C/C++</a> [ICSE 2012]</li>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week04/kint.pdf">Improving Integer Security for Systems with KINT</a> [OSDI 12]</li>
 </ul>
 <h2 id="dynamicstatic-analysis-frameworks">Dynamic/Static Analysis Frameworks</h2>
 <ul>
-<li><a href="">Pin: building customized program analysis tools with dynamic instrumentation [PLDI&lsquo;05]</a></li>
-<li><a href="">Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation [PLDI&lsquo;07]</a></li>
-<li><a href="">LLVM: A Compilation Framework for Lifelong Program Analysis &amp;
-    Transformation [CGO&lsquo;04]</a></li>
+<li><a href="https://www.cs.ucr.edu/~heng/teaching/cs260-winter2017/luk05pin.pdf">Pin: building customized program analysis tools with dynamic instrumentation</a> [PLDI 05]</li>
+<li><a href="http://valgrind.org/docs/valgrind2007.pdf">Valgrind: A Framework for Heavyweight Dynamic Binary Instrumentation</a> [PLDI 07]</li>
+<li><a href="https://llvm.org/pubs/2003-09-30-LifelongOptimizationTR.pdf">LLVM: A Compilation Framework for Lifelong Program Analysis &amp; Transformation</a> [CGO&lsquo;04]</li>
+<li>DynInst <a href="ftp://128.105.2.31/pub/paradyn/papers/Bernat11AWAT.pdf">Anywhere, any-time binary instrumentation</a> [PASTE 11]</li>
+<li><a href="https://www.usenix.org/system/files/conference/atc12/atc12-final39.pdf">AddressSanitizer: A Fast Address Sanity Checker</a> [ATC 12]</li>
 </ul>
-<h2 id="data-flow-tracking-and-data-flow-analysis">Data-flow tracking and Data-flow analysis</h2>
+<!--  More control flow
+* [Control-Flow Bending: On the Effectiveness of Control-Flow Integrity](https://www.usenix.org/node/190961) [SEC 15]
+* Efficient Path Encoding [MICRO'96]
+* Precise Calling Context Encoding [ICSE'10]
+* LDX: Causality Inference by Lightweight Dual Execution [ASPLOS'16]
+-->
+
+<h2 id="dynamic-analysis">Dynamic Analysis</h2>
 <ul>
-<li>libdft: Practical Dynamic Data Flow Tracking for Commodity Systems [VEE&lsquo;12]</li>
-<li>A General Approach for Efficiently Accelerating Software-based Dynamic Data Flow Tracking on Commodity Hardware [NDSS&lsquo;12]</li>
-<li>LDX: Causality Inference by Lightweight Dual Execution [ASPLOS&lsquo;16]</li>
+<li><a href="https://dl.acm.org/citation.cfm?id=2151042">libdft: Practical Dynamic Data Flow Tracking for Commodity Systems</a> [VEE 12]</li>
+<li><a href="https://liberty.princeton.edu/Publications/ndss12_tfa.pdf">A General Approach for Efficiently Accelerating Software-based Dynamic Data Flow Tracking on Commodity Hardware</a> [NDSS 12]</li>
+<li><a href="https://www.bodden.de/pubs/far+14flowdroid.pdf">FlowDroid: Precise Context, Flow, Field, Object-sensitive and Lifecycle-aware Taint Analysis for Android Apps</a> [PLDI 14]</li>
+<li><a href="">LDX: Causality Inference by Lightweight Dual Execution</a> [ASPLOS 16]</li>
 </ul>
-<h2 id="control-flow-tracking-and-control-flow-analysis">Control-flow tracking and Control-flow analysis</h2>
+<h2 id="static-analysis">Static Analysis</h2>
 <ul>
-<li>Control-Flow Integrity [MSR-TR-05-18]</li>
-<li>Efficient Path Encoding [MICRO&lsquo;96]</li>
-<li>Precise Calling Context Encoding [ICSE&lsquo;10]</li>
-<li>LDX: Causality Inference by Lightweight Dual Execution [ASPLOS&lsquo;16]</li>
+<li><a href="https://www3.cs.stonybrook.edu/~mikepo/papers/ccr.sp18.pdf">Compiler-assisted Code Randomization</a> [SP 18]</li>
 </ul>
-<h2 id="evasive-techniques">Evasive techniques</h2>
+<h2 id="symbolic-execution">Symbolic Execution</h2>
 <ul>
-<li>Evading android runtime analysis via sandbox detection [ASIACCS&lsquo;14]</li>
-<li>Detecting Malware and Sandbox Evasion Techniques [SANS InfoSec Reading Room]</li>
+<li><a href="https://dl.acm.org/citation.cfm?id=1855741.1855756">KLEE: Unassisted and Automatic Generation of High-Coverage Tests for Complex Systems Programs</a> [OSDI 08]</li>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week04/angrSoK.pdf">(State of) The Art of War: Offensive Techniques in Binary Analysis</a> [SP 16]</li>
 </ul>
-<h2 id="news-article">News Article</h2>
+<h2 id="virtualization-and-security">Virtualization and Security</h2>
 <ul>
-<li>X-Force: Force-Executing Binary Programs for Security Applications [USENIX&lsquo;14]</li>
-<li>Revolver: An Automated Approach to the Detection of Evasive Web-based Malware [SP&lsquo;13]</li>
+<li><a href="http://dforeman.homedns.org/~dj/550pages/Readings/garfinkle05when.pdf">When Virtual is Harder than Real: Security Challenges in Virtual Machine Based Computing Environments</a> [HotOS 05]</li>
+<li><a href="https://pdfs.semanticscholar.org/1ee8/0058d38b69ceed7ad22b3bf4c55040b1c2ec.pdf">Virtualization: Issues, Security Threats, and Solutions</a></li>
+<li><a href="https://www.researchgate.net/profile/Haibo_Chen9/publication/220910130_CloudVisor_Retrofitting_protection_of_virtual_machines_in_multi-tenant_cloud_with_nested_virtualization/links/559dba5d08ae76bed0bb4730/CloudVisor-Retrofitting-protection-of-virtual-machines-in-multi-tenant-cloud-with-nested-virtualization.pdf">CloudVisor: Retrofitting Protection of Virtual Machines in Multi-tenant Cloud with Nested Virtualization</a> [SOSP 11]</li>
+<li><a href="https://css.csail.mit.edu/6.858/2011/readings/get-off-my-cloud.pdf">Hey, You, Get Off of My Cloud: Exploring Information Leakage in Third-Party Compute Clouds</a> [CCS 09]</li>
 </ul>
-<h2 id="code-obfuscationde-obfuscation">Code obfuscation/de-obfuscation</h2>
+<h2 id="kernel-security">Kernel security</h2>
 <ul>
+<li><a href="https://tc.gts3.org/cs8803/2014/r/kbugs.pdf">Linux kernel vulnerabilities: State-of-the-art defenses and open problems</a> short paper</li>
+<li><a href="https://www.usenix.org/system/files/conference/usenixsecurity14/sec14-paper-kemerlis.pdf">ret2dir: Rethinking Kernel Isolation</a> [SEC 14]</li>
+<li><a href="https://dl.acm.org/citation.cfm?id=2978321">Breaking Kernel Address Space Layout Randomization with Intel TSX</a> [CCS 16]</li>
+</ul>
+<h2 id="sandboxing-isolation-and-fault-localization">Sandboxing: Isolation, and Fault localization</h2>
+<ul>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week05/chrome.pdf">The Security Architecture of the Chromium Browser</a></li>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week05/nacl.pdf">Native Client: A Sandbox for Portable, Untrusted x86 Native Code</a> [S&amp;P 09]</li>
+<li><a href="https://www3.cs.stonybrook.edu/~mikepo/papers/wearntear.sp17.pdf">Spotless Sandboxes: Evading Malware Analysis Systems using Wear-and-Tear Artifacts</a> [SP 17]</li>
+</ul>
+<h2 id="iot-and-cps-security">IoT and CPS Security</h2>
+<!--
+Refer to Mu Zhang, Yonghwi list
+
+* [iRiS: Vetting Private API Abuse in iOS Applications](https://cyfi.ece.gatech.edu/publications/CCS_15_iRiS.pdf) [CCS 15]
+-->
+
+<ul>
+<li><a href="https://dl.acm.org/citation.cfm?id=2813650">GUITAR: Piecing Together Android App GUIs from Memory Images</a> [CCS 15]</li>
+<li><a href="http://seclab.illinois.edu/wp-content/uploads/2017/12/wang2018fear.pdf">Fear and Logging in the Internet of Things</a> [NDSS 18]</li>
+<li><a href="https://web.cse.ohio-state.edu/~lin.3021/file/NDSS18b.pdf">IoTFuzzer: Discovering Memory Corruptions in IoT Through App-based Fuzzing</a> [NDSS 18]</li>
+<li>
+<p><a href="https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-celik.pdf">Sensitive Information Tracking in Commodity IoT</a> [SEC 18]</p>
+</li>
+<li>
+<p><a href="https://ieeexplore.ieee.org/abstract/document/5772960">Stuxnet: Dissecting a Cyberwarfare Weapon</a> [SP 11]</p>
+<ul>
+<li><a href="https://news.yahoo.com/revealed-how-a-secret-dutch-mole-aided-the-us-israeli-stuxnet-cyber-attack-on-iran-160026018.html">Revealed: How a secret Dutch mole aided the U.S.-Israeli Stuxnet cyberattack on Iran</a> [News article]</li>
+</ul>
+</li>
+</ul>
+<!--
+* [Efficient patch-based auditing for web application vulnerabilities]() [OSDI 12]
+-->
+
+<h2 id="threat-intelligence-computing">Threat Intelligence Computing</h2>
+<ul>
+<li><a href="https://dl.acm.org/citation.cfm?id=3243829">Threat Intelligence Computing</a> [CCS 18]</li>
+<li><a href="https://www.usenix.org/conference/usenixsecurity19/presentation/li">Reading the Tea leaves: A Comparative Analysis of Threat Intelligence</a> [SEC 19]</li>
+<li><a href="https://www.usenix.org/conference/usenixsecurity19/presentation/feng">Understanding and Securing Device Vulnerabilities through Automated Bug Report Analysis</a> [SEC 19]</li>
+<li><a href="https://www.usenix.org/conference/usenixsecurity19/presentation/shen">ATTACK2VEC: Leveraging Temporal Word Embeddings to Understand the Evolution of Cyberattacks</a> [SEC 19]</li>
+</ul>
+<h2 id="audit-logging-and-provenance-analysis">Audit-logging and Provenance Analysis</h2>
+<ul>
+<li><a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/Traps-and-Pitfalls-Practical-Problems-in-System-Call-Interposition-Based-Security-Tools-Tal-Garfinkel.pdf">Traps and Pitfalls: Practical Problems in System Call Interposition Based Security Tools</a> [NDSS 03]</li>
+<li><a href="https://friends.cs.purdue.edu/pubs/LogGC.pdf">LogGC: Garbage Collecting Audit Log</a> [CCS 13]</li>
+<li><a href="https://kangkookjee.github.io/publications/liu-ndss2018.pdf">Towards a Timely Causality Analysis for Enterprise Security</a> [NDSS 18]</li>
+</ul>
+<h3 id="code-obfuscationde-obfuscation">Code obfuscation/de-obfuscation</h3>
+<ul>
+<li><a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=7163053">SoK: Deep Packer Inspection: A Longitudinal Study of the Complexity of Run-Time Packers</a> [SP 15]</li>
 <li>Deobfuscation of virtualization-obfuscated software: a semantics-based approach [CCS&lsquo;11]</li>
 <li>LOOP: Logic-Oriented Opaque Predicate Detection in Obfuscated Binary Code [CCS&lsquo;15]</li>
 <li>Code obfuscation against symbolic execution attacks [ACSAC&lsquo;16]</li>
 </ul>
-<h2 id="record-and-replay-n-version-systems">Record and replay / N-version systems</h2>
+<h2 id="hardwares">Hardwares</h2>
+<h3 id="hardware-vulnerabilities-cases-for-meltdown-spectre-attacks">Hardware Vulnerabilities - Cases for Meltdown / Spectre Attacks</h3>
 <ul>
-<li>Intrusion recovery using selective re-execution [OSDI&lsquo;10]</li>
-<li>Record and transplay: partial checkpointing for replay debugging across heterogeneous systems [SIGMETRICS&lsquo;11]</li>
-<li>Transparent Mutable Replay for Multicore Debugging and Patch Validation [ASPLOS&lsquo;13]</li>
-<li>Varan the Unbelievable: An Efficient N-version Execution Framework [ASPLOS&lsquo;15]</li>
+<li><a href="https://www.usenix.org/system/files/conference/usenixsecurity18/sec18-lipp.pdf">Meltdown: Reading Kernel Memory from User Space</a>[Sec 18]</li>
+<li><a href="https://spectreattack.com/spectre.pdf">Spectre Attacks: Exploiting Speculative Execution</a>[S&amp;P 19]</li>
 </ul>
-<h2 id="audit-logging">Audit-logging</h2>
+<h3 id="hardware-and-enclave-sgx-security">Hardware and Enclave (SGX) Security</h3>
 <ul>
-<li>High Accuracy Attack Provenance via Binary-Based Execution Partition [NDSS&lsquo;13]</li>
-<li>LogGC: Garbage Collecting Audit Log [CCS&lsquo;13]</li>
-<li>Efficient patch-based auditing for web application vulnerabilities [OSDI&lsquo;12]</li>
+<li><a href="https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-lee-sangho.pdf">Inferring Fine-grained Control Flow Inside SGX Enclaves with Branch Shadowing</a> [SEC 17]</li>
+<li><a href="https://syssec-s18.unexploitable.systems/l/week06/sgx-side.pdf">High-Resolution Side Channels for Untrusted Operating Systems</a>[ATC 17]</li>
+<li><a href="https://www.usenix.org/conference/atc17/technical-sessions/presentation/tsai">Graphene-SGX: A Practical Library OS for Unmodified Applications on SGX</a> [ATC 17]</li>
 </ul>
-<h2 id="sandboxingisolation-fault-localization">Sandboxing/isolation, Fault localization</h2>
-<ul>
-<li>Native Client: A Sandbox for Portable, Untrusted x86 Native Code [SP&lsquo;09]</li>
-<li>Mobile/IoT Security</li>
-<li>iRiS: Vetting Private API Abuse in iOS Applications [CCS&lsquo;15]</li>
-<li>GUITAR: Piecing Together Android App GUIs from Memory Images. [CCS&lsquo;15]</li>
-<li>Fear and Logging in the Internet of Things [NDSS&lsquo;18]</li>
-<li>IoTFuzzer: Discovering Memory Corruptions in IoT Through App-based Fuzzing [NDSS&lsquo;18]</li>
-<li>Sensitive Information Tracking in Commodity IoT [USENIX&lsquo;18]</li>
-</ul>
+<!-- 
+### Evasive techniques
+
+* Evading android runtime analysis via sandbox detection [ASIACCS'14]
+* Detecting Malware and Sandbox Evasion Techniques [SANS InfoSec Reading Room]
+
+## News Topics
+* X-Force: Force-Executing Binary Programs for Security Applications [USENIX'14]
+* Revolver: An Automated Approach to the Detection of Evasive Web-based Malware [SP'13]
+
+## Record and replay / N-version systems
+* Intrusion recovery using selective re-execution [OSDI'10]
+* Record and transplay: partial checkpointing for replay debugging across heterogeneous systems [SIGMETRICS'11]
+* Transparent Mutable Replay for Multicore Debugging and Patch Validation [ASPLOS'13]
+* Varan the Unbelievable: An Efficient N-version Execution Framework [ASPLOS'15]
+-->
+
 <hr />
-<p>Page last revised on: 2019-08-30</p></div>
+<p>Page last revised on: 2019-09-02</p></div>
         </div>
 
         <footer class="col-md-12">

@@ -27,7 +27,7 @@
   <tr>
     <td class="tg-c3ow">Week 2<br>(Aug 30, 2019)</td>
     <td class="tg-c3ow"><span style="font-weight:bold">Binary and Process - Basic Concepts</span><br><br>X86 assembly, The ELF file  format<br>Linux x86 Program Start Up, <br>Program in Memory,<br>Load-time reloc. of shared libraries<br><br><span style="font-weight:bold">How to read / present academic papers</span></td>
-    <td class="tg-c3ow"><a href="http://readelf/">readelf</a>, <a href="http://objdump/">objdump</a>, <br><a href="http://todo/">nm</a>, <br><a href="http://gdb/">GDB</a>, <a href="http://gdbinit/">gdbinit</a>,<br><a href="https://defuse.ca/online-x86-assembler.htm">Online x86 Assembler</a></td>
+    <td class="tg-c3ow"><a href="http://readelf/">readelf</a>, <a href="http://objdump/">objdump</a>, <br><a href="http://todo/">nm</a>, <br><a href="http://gdb/">GDB</a>, <a href="http://gdbinit/">gdbinit</a>,<br><a href="https://defuse.ca/online-x86-assembler.htm">Online x86 Assembler</a><br><a href="https://github.com/microsoft/detours">Microsoft Detour</a></td>
     <td class="tg-c3ow"><a href="http://www.naver.com/">1</a>, <a href="http://www.naver.com/">2</a>, <a href="http://www.naver.com/">3</a></td>
     <td class="tg-c3ow"></td>
   </tr>
@@ -134,8 +134,9 @@
     <td class="tg-c3ow"><span style="font-weight:bold">Project Presentation</span></td>
     <td class="tg-c3ow"></td>
     <td class="tg-c3ow"></td>
-    <td class="tg-c3ow"><br>Assignment 3 due,  <br>Project Final Report <br>&amp; Presentation</td>
+    <td class="tg-c3ow"><br>Assignment 3 due,<br>Project Final Report <br>&amp; Presentation</td>
   </tr>
 </table>
+
 ----
 Page last revised on: {{ git_revision_date }}

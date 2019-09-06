@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Quizzes - CS6332-F2019 @ UTD</title>
+        <title>Quiz 1 (10pt) - Disassembling binary and patching - CS6332-F2019 @ UTD</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -74,17 +74,62 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#quizzes">Quizzes</a></li>
+        <li class="main active"><a href="#quiz-1-10pt-disassembling-binary-and-patching">Quiz 1 (10pt) - Disassembling binary and patching</a></li>
+            <li><a href="#exercise-description">Exercise description</a></li>
+            <li><a href="#submission">Submission</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="quizzes">Quizzes</h1>
+<h1 id="quiz-1-10pt-disassembling-binary-and-patching">Quiz 1 (10pt) - Disassembling binary and patching</h1>
+<p>From this exercise, we aim to run the basics of binary reverse engineering to find a secret from binary, modify its value, and change the execution.</p>
+<h2 id="exercise-description">Exercise description</h2>
+<h3 id="step-0-set-up-your-environment-ubuntu-vm">[Step 0] Set-up your environment (Ubuntu VM)</h3>
 <ul>
-<li>Quiz 1</li>
+<li>Download <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox</a> install it to your computer.</li>
+<li>Create a <a href="http://releases.ubuntu.com/16.04/">Ubuntu 16.04 (64-bit)</a> VM instance</li>
+<li>After initial boot, enable 64-bit Ubuntu to run 32-bit executables by running,</li>
 </ul>
-<hr />
-<p>Page last revised on: 2019-08-27</p></div>
+<pre><code class="bash">    sudo apt update
+    sudo apt install libc6-i386
+</code></pre>
+
+<ol>
+<li>
+<p>Install necessary tools</p>
+<ul>
+<li><a href="https://github.com/longld/peda">gdb-peda</a>, <a href="https://github.com/radare/radare2">radare2</a> &hellip;</li>
+</ul>
+</li>
+<li>
+<p>Download binaries from the folliwng links
+    <a href="http://www.syssec.org/crackmes/crackme0x00">crackme0x00</a>, <a href="http://www.syssec.org/crackmes/crackme0x01">crackme0x01</a>, <a href="http://www.syssec.org/crackmes/crackme0x02">crackme0x02</a></p>
+</li>
+</ol>
+<h3 id="part-1-3pt-find-the-secret">[Part 1 - 3pt] Find the secret</h3>
+<ul>
+<li>Reverse engineering three payloads with Radare 2 (or with your favorite tools) to find a secret. Write a secret value to <em>README.md</em> and simple description of how did you find secrets.</li>
+</ul>
+<h3 id="part-2-3pt-modify-binary-to-change-the-secret">[Part 2 - 3pt] Modify binary to change the secret</h3>
+<p>For <em>crackme0x00</em> and <em>crackme0x01</em> payloads, you will modify binaries to change the secret values. The new secret value will be specific to your <em>net_id</em>. The following will give you new secret value. </p>
+<pre><code class="bash">$ m=$(echo &quot;&lt;your_net_id&gt;&quot; |md5);echo ${m: -4}
+</code></pre>
+
+<p>Modified binaries will be named as below. </p>
+<pre><code class="bash">crackme0x00_&lt;your_net_id&gt;
+crackme0x01_&lt;your_net_id&gt;
+</code></pre>
+
+<h3 id="part-3-4pt-modify-binary-to-change-execution">[Part 3 - 4pt] Modify binary to change execution</h3>
+<p>For <em>crackme0x01</em> and <em>crackme0x02</em> payloads, overwrite an instruction so as to print success message regardless of its inputs. Modified binary will be named as below.</p>
+<pre><code class="bash">crackme0x01_jmp
+crackme0x02_jmp
+</code></pre>
+
+<h2 id="submission">Submission</h2>
+<p><em>Tar/gzip</em> your outputs using the following command and upload it to eLearning. For each part, please add simple description regarding how did you get the result.</p>
+<pre><code class="sh">tar cvzf cs6332q01.tgz README.md crackme0x0?_* 
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">
