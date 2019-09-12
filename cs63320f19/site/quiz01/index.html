@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Quiz 1 (10pt) - Disassembling binary and patching - CS6332-F2019 @ UTD</title>
+        <title>quiz 01 - CS6332-F2019 @ UTD</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -58,6 +58,15 @@
                             <li >
                                 <a href="../projects/">Projects</a>
                             </li>
+                            <li class="dropdown active">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assignments <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li class="active">
+    <a href="./">quiz 01</a>
+</li>
+                                </ul>
+                            </li>
                         </ul>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -66,6 +75,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li >
+                                <a rel="next" href="../projects/">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="disabled">
+                                <a rel="prev" >
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -112,7 +131,7 @@
 </ul>
 <h3 id="part-2-3pt-modify-binary-to-change-the-secret">[Part 2 - 3pt] Modify binary to change the secret</h3>
 <p>For <em>crackme0x00</em> and <em>crackme0x01</em> payloads, you will modify binaries to change the secret values. The new secret value will be specific to your <em>net_id</em>. The following will give you new secret value. </p>
-<pre><code class="bash">$ m=$(echo &quot;&lt;your_net_id&gt;&quot; |md5);echo ${m: -4}
+<pre><code class="bash">$ m=$(echo &quot;&lt;your_net_id&gt;&quot; |md5sum |cut -d ' ' -f 1);echo ${m: -4}
 </code></pre>
 
 <p>Modified binaries will be named as below. </p>
@@ -126,6 +145,12 @@ crackme0x01_&lt;your_net_id&gt;
 crackme0x02_jmp
 </code></pre>
 
+<h3 id="extra-other-tools">[Extra] other tools?</h3>
+<ul>
+<li>IDA Pro (free version), Ghidra (open-sourced by NSA)</li>
+<li>Tools for the same purpose, with better GUI interface.</li>
+<li>Share your experience! (15 ~ 20 min) This can replace paper presentation.</li>
+</ul>
 <h2 id="submission">Submission</h2>
 <p><em>Tar/gzip</em> your outputs using the following command and upload it to eLearning. For each part, please add simple description regarding how did you get the result.</p>
 <pre><code class="sh">tar cvzf cs6332q01.tgz README.md crackme0x0?_* 

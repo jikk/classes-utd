@@ -174,9 +174,33 @@ Steganography has been an effective techinques for the hacker community in embed
 
 From this project, student will attempts to parse malformed security indicators into STIX or TAXI conpatiable formation, so as it can be properly translated into standard IOC format and further circulated.  
 
-# Conntrack Visualizer
+## Conntrack Visualizer
 
+## Bridging Threat Intelligence
 
+* Leveraging Cuckoo environment
+* Between network and system domains
+* While one threat intelligence matches, how about another?
+* Does how credibility/trust propagate across different domains?
+* We may run this from Cuckoo sandbox
+
+## User level process-DNS correlation
+
+* For Windows and Linux
+
+## Efficient and Complete IPC monitoring mechanism
+
+----
+### Project idea 4: TPM leveraged Integrity and Safety Assurance for Edge Data Collection Agent
+* In implementing host-based security solutions, the guarantee for integrity of data collection agent and trustworthiness of its report have  always been a challenging problem. For instance, the security analyst from Security Operation Center (SoC) does not have many options to confirm reports from end-devices (e.g., computers, servers, IoT devices) are indeed genunie (uncompromised). 
+
+* In this project, we want to leverage the hardware encoded security to build a root of trust for end-host security monitoring agents and confirm the authenticity and integrity of its status and messages it is reporting.
+
+* From the project, students will 
+    * Investigate and study threat model for end-host security agent.
+    * Inverstigate the capability and limitation of generally used TPM devices.
+    * Design and propose different level of security design and their trade-offs.
+    * Build prototype for TPM leveraged data collection agent 
 
 ----
 

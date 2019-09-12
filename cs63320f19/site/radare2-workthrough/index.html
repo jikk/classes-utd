@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Assignments - CS6332-F2019 @ UTD</title>
+        <title>Tutorial for R2 + crackme0x00 - CS6332-F2019 @ UTD</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -83,20 +83,160 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#assignments">Assignments</a></li>
-            <li><a href="#assignment-1">Assignment 1</a></li>
-            <li><a href="#assignment-2">Assignment 2</a></li>
-            <li><a href="#assignment-3">Assignment 3</a></li>
+        <li class="main active"><a href="#tutorial-for-r2-crackme0x00">Tutorial for R2 + crackme0x00</a></li>
+            <li><a href="#starting-r2">Starting R2</a></li>
+            <li><a href="#investigating-binary">Investigating binary</a></li>
+            <li><a href="#investigate-function">Investigate function</a></li>
+            <li><a href="#basic-command-format">Basic Command format</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="assignments">Assignments</h1>
-<h2 id="assignment-1">Assignment 1</h2>
-<h2 id="assignment-2">Assignment 2</h2>
-<h2 id="assignment-3">Assignment 3</h2>
-<hr />
-<p>Page last revised on: 2019-09-02</p></div>
+<h1 id="tutorial-for-r2-crackme0x00">Tutorial for R2 + crackme0x00</h1>
+<h2 id="starting-r2">Starting R2</h2>
+<pre><code>$ tmux a
+$ wget www.syssec.org/crackmes/crackme0x00
+$ r2 crackme0x00
+</code></pre>
+
+<pre><code>[0x08048360]&gt; aaa    :analyze binary
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Analyze function calls (aac)
+[x] Use -AA or aaaa to perform additional experimental analysis.
+[x] Constructing a function name for fcn.* and sym.func.* functions (aan)
+
+[0x08048493]&gt; afl ; list functions
+0x080482f8    1 23           sym._init
+0x08048320    1 6            sym.imp.__libc_start_main
+0x08048330    1 6            sym.imp.scanf
+0x08048340    1 6            sym.imp.printf
+</code></pre>
+
+<h2 id="investigating-binary">Investigating binary</h2>
+<pre><code>
+[0x08048360]&gt; i:(nfo)
+blksz    0x0
+block    0x100
+fd       3
+file     crackme0x00
+format   elf
+...
+
+[0x08048414]&gt; i~nx : i|grep nx
+nx       true
+...
+
+[0x08048414]&gt; ii : imports
+...
+
+[0x08048414]&gt; is : symtab entries
+...
+
+[0x08048414]&gt; izzz : dump all strings from the binary
+...
+
+000 0x00000028 0x08048028   4  10 (LOAD0) utf16le 4 \t(
+001 0x00000154 0x08048154  18  19 (.interp) ascii /lib/ld-linux.so.2
+
+[0x08048414]&gt; izzz~Password
+014 0x00000581 0x08048581  10  11 (.rodata) ascii Password:
+016 0x00000596 0x08048596  18  19 (.rodata) ascii Invalid Password!\n
+017 0x000005a9 0x080485a9  15  16 (.rodata) ascii Password OK :)\n
+
+</code></pre>
+
+<h2 id="investigate-function">Investigate function</h2>
+<pre><code>
+[0x08048493]&gt; s main # seek to main symbol
+[0x08048414]&gt; pdf # disasemble function
+...
+
+[0x08048414]&gt; pdc ; decompiled code
+
+[0x08048414]&gt; v  # visual mode - rotate with 'p', hex, disasm, debug, words, buf; exit with 'q'
+[0x08048414]&gt; VV  # visual mode graph; rotate with 'p' for different BB representations; exit with 'q'
+
+[0x0804848c]&gt; ps @ str.250382  # string type variable
+250382
+
+[0x0804848c]&gt; s str.250382
+[0x0804858f]&gt; pds
+;-- str.250382:
+0x0804858f &quot;250382&quot;
+;-- str.Invalid_Password:
+0x08048596 &quot;Invalid Password!\n&quot;
+...
+</code></pre>
+
+<h2 id="basic-command-format">Basic Command format</h2>
+<p>Command syntax: <code>[.][times][cmd][~grep][@[@iter]addr!size][|&gt;pipe]</code>
+* <code>;</code> Command chaining: <code>x 3;s+3;pi 3;s+3;pxo 4;</code>
+* <code>|</code> Pipe with shell commands: <code>pd | less</code>
+* <code>!</code> Run shell commands: <code>!cat /etc/passwd</code>
+* <code>!!</code> Escapes to shell, run command and pass output to radare buffer
+* Note: The double exclamation mark tells radare to skip the plugin list to find an IO plugin handling this command to launch it directly to the shell. A single one will walk through the io plugin list.
+* <code>`</code> Radare commands: <code>wx `!ragg2 -i exec`</code>
+* <code>~</code> grep
+* <code>~!</code> grep -v
+* <code>~[n]</code> grep by columns <code>afl~[0]</code>
+* <code>~:n</code> grep by rows <code>afl~:0</code></p>
+<pre><code>    pi~mov,eax            ; lines with mov or eax
+    pi~mov&amp;eax            ; lines with mov and eax
+    pi~mov,eax:6          ; 6 first lines with mov or eax
+    pd 20~call[0]:0       ; grep first column of the first row matching 'call'
+</code></pre>
+
+<ul>
+<li><code>.cmd</code> Interprets command output</li>
+</ul>
+<pre><code>is* prints symbols
+.is* interprets output and define the symbols in radare (normally they are already loaded if r2 was not invoked with -n)
+</code></pre>
+
+<ul>
+<li><code>..</code> repeats last commands (same as enter \n)</li>
+<li><code>(</code> Used to define and run macros</li>
+<li><code>$</code> Used to define alias</li>
+<li><code>$$</code>: Resolves to current address</li>
+<li>Offsets (<code>@</code>) are absolute, we can use $$ for relative ones <code>@ $$+4</code></li>
+<li><code>?</code> Evaluate expression</li>
+</ul>
+<pre><code>[0x00000000]&gt; ? 33 +2
+35 0x23 043 0000:0023 35 00100011 35.0 0.000000
+
+Note: | and &amp; need to be escaped
+</code></pre>
+
+<ul>
+<li><code>?$?</code> Help for variables used in expressions</li>
+<li><code>$$</code>: Here</li>
+<li><code>$s</code>: File size</li>
+<li><code>$b</code>: Block size</li>
+<li><code>$l</code>: Opcode length</li>
+<li><code>$j</code>: When <code>$$</code> is at a <code>jmp</code>, <code>$j</code> is the address where we are going to jump to</li>
+<li><code>$f</code>: Same for <code>jmp</code> fail address</li>
+<li><code>$m</code>: Opcode memory reference (e.g. mov eax,[0x10] =&gt; 0x10)</li>
+<li><code>???</code> Help for <code>?</code> command</li>
+<li><code>?i</code> Takes input from stdin. Eg <code>?i username</code></li>
+<li><code>??</code> Result from previous operations</li>
+<li><code>?s from to [step]</code>: Generates sequence from <from> to <to> every <step></li>
+<li><code>?p</code>: Get physical address for given virtual address</li>
+<li><code>?P</code>: Get virtual address for given physical one</li>
+<li><code>?v</code> Show hex value of math expr</li>
+</ul>
+<pre><code>?v 0x1625d4ca ^ 0x72ca4247 = 0x64ef968d
+?v 0x4141414a - 0x41414140  = 0xa
+</code></pre>
+
+<ul>
+<li><code>?l str</code>: Returns the length of string</li>
+<li><code>@@</code>: Used for iterations</li>
+</ul>
+<pre><code>wx ff @@10 20 30      Writes ff at offsets 10, 20 and 30
+wx ff @@`?s  1 10 2`  Writes ff at offsets 1, 2 and 3
+wx 90 @@ sym.*        Writes a nop on every symbol
+</code></pre></div>
         </div>
 
         <footer class="col-md-12">

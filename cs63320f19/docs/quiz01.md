@@ -29,7 +29,8 @@ From this exercise, we aim to run the basics of binary reverse engineering to fi
 For *crackme0x00* and *crackme0x01* payloads, you will modify binaries to change the secret values. The new secret value will be specific to your *net_id*. The following will give you new secret value. 
 
 ```bash
-$ m=$(echo "<your_net_id>" |md5);echo ${m: -4}
+$ export m=$(echo "<your_net_id>" |md5sum |cut -d ' ' -f 1|tr '[:lower:]' '[:upper:]') ;echo "obase=10; ibase=16; ${m: -4}"|bc
+
 ```
 
 Modified binaries will be named as below. 
@@ -48,7 +49,7 @@ crackme0x01_jmp
 crackme0x02_jmp
 ```
 
-### [Extra] ]other tools?
+### [Extra] other tools?
 
 * IDA Pro (free version), Ghidra (open-sourced by NSA)
 * Tools for the same purpose, with better GUI interface.
