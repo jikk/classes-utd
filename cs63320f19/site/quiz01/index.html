@@ -131,7 +131,8 @@
 </ul>
 <h3 id="part-2-3pt-modify-binary-to-change-the-secret">[Part 2 - 3pt] Modify binary to change the secret</h3>
 <p>For <em>crackme0x00</em> and <em>crackme0x01</em> payloads, you will modify binaries to change the secret values. The new secret value will be specific to your <em>net_id</em>. The following will give you new secret value. </p>
-<pre><code class="bash">$ m=$(echo &quot;&lt;your_net_id&gt;&quot; |md5sum |cut -d ' ' -f 1);echo ${m: -4}
+<pre><code class="bash">$ export m=$(echo &quot;&lt;your_net_id&gt;&quot; |md5sum |cut -d ' ' -f 1|tr '[:lower:]' '[:upper:]') ;echo &quot;obase=10; ibase=16; ${m: -4}&quot;|bc
+
 </code></pre>
 
 <p>Modified binaries will be named as below. </p>
