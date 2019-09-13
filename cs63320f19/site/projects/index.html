@@ -63,7 +63,11 @@
                                 <ul class="dropdown-menu">
                                     
 <li >
-    <a href="../quiz01/">quiz 01</a>
+    <a href="../quiz01/">quiz 0x01</a>
+</li>
+                                    
+<li >
+    <a href="../assignment01/">assignment 0x01</a>
 </li>
                                 </ul>
                             </li>
@@ -100,27 +104,24 @@
             <li><a href="#project-direction-3-collect-system-data-for-high-level-security-analytic">Project direction 3: Collect system data for high-level security analytic</a></li>
         <li class="main "><a href="#binary-similarity-analysis-to-detect-supply-chain-attack">Binary Similarity Analysis to Detect Supply Chain Attack</a></li>
             <li><a href="#project-steps">Project steps</a></li>
-            <li><a href="#reference-paper">Reference paper</a></li>
-        <li class="main "><a href="#edge-ml-device-project">Edge-ML device project</a></li>
-            <li><a href="#project-direction-1-build-your-own-security-application-using-edge-ml-device">Project direction 1: Build your own security application using Edge-ML device</a></li>
-            <li><a href="#project-direction-2-protecting-important-information-from-edge-ml-device">Project direction 2: Protecting important information from Edge-ML device</a></li>
+            <li><a href="#resources">Resources</a></li>
         <li class="main "><a href="#improvement-for-automated-large-scale-malware-analysis-study">Improvement for Automated Large-scale Malware Analysis Study</a></li>
             <li><a href="#project-direction-1-bridging-threat-intelligence">Project direction 1: Bridging Threat Intelligence</a></li>
             <li><a href="#project-steps_1">Project steps</a></li>
             <li><a href="#references">References</a></li>
         <li class="main "><a href="#implementation-of-advanced-persistent-threat-apt-framework-for-security-evaluation">Implementation of Advanced Persistent Threat (APT) framework for Security Evaluation</a></li>
-            <li><a href="#resources">Resources</a></li>
-        <li class="main "><a href="#comparison-of-process-level-instrumentation-approaches-virtualization">Comparison of process-level instrumentation approaches virtualization</a></li>
-        <li class="main "><a href="#automated-ioc-processing-to-produce-actionable-security-rules">Automated IOC processing to produce actionable security rules</a></li>
-            <li><a href="#goal-and-problem-statement">Goal and Problem Statement</a></li>
             <li><a href="#resources_1">Resources</a></li>
+        <li class="main "><a href="#comparison-of-process-level-instrumentation-approaches-virtualization">Comparison of process-level instrumentation approaches virtualization</a></li>
+        <li class="main "><a href="#edge-ml-device-project">Edge-ML device project</a></li>
+            <li><a href="#goal-and-problem-statement">Goal and Problem Statement</a></li>
+            <li><a href="#resources_2">Resources</a></li>
         <li class="main "><a href="#conntrack-visualizer">Conntrack Visualizer</a></li>
+            <li><a href="#resources_3">Resources</a></li>
         <li class="main "><a href="#steganography-or-image-forensics-analysis-and-defense-for-malicious-payload-embedded-documentation">Steganography or image forensics -- Analysis and defense for malicious payload embedded documentation</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<hr />
 <h2 id="system-call-level-data-collection-for-behavioral-security-analysis">System call level data collection for behavioral security analysis</h2>
 <h3 id="motivation">Motivation</h3>
 <p>In modern security scene, many security solutions are based on data collected from each end-host (vs. out-host or perimeter network monitoring).
@@ -134,7 +135,9 @@ Then the student will run those against standardized workload (<em>e.g.,</em> be
 <p>Traditional syscall-level monitoring is limited, since system call sequences do not convey much security implication for itself. So we want to explore other events with higher security implications worth collected and analyzed. DNS is one of such indicators, which has been collected by network-level monitoring (e.g., firewall), outside the host.  Therefore, we have only been able to  associate DNS query to the host, without knowing which process initiated the query.</p>
 <p>The existing solution gets this implement by installing a kernel module to define the association between the process to mbuf, which later be transferred to the user-level agent. The approach turns out to be too intrusive affecting the system stability. The user also needs to re-install kernel modules for every system update.
 The project will implement the process-DNS association much lighter fashion by associating two information sources available at user-level. The one is network system call (i.e., send(), recv()) trace and the other is PCAP data.</p>
-<p><img alt="" src="https://i.imgur.com/Q9Cy6Yt.jpg =100x" /></p>
+<p><img alt="PDNS diagram" src="https://i.imgur.com/Q9Cy6Yt.jpg" width="65%"/></p>
+
+<p><br></p>
 <h3 id="project-direction-3-collect-system-data-for-high-level-security-analytic">Project direction 3: Collect system data for high-level security analytic</h3>
 <p>You can install data collection agent to your system to collect and store the interesting system events 24x7 and to model system and application behaviors.</p>
 <hr />
@@ -169,27 +172,10 @@ In this project, students can come up with an analysis approach that compares bi
 </ul>
 </li>
 </ol>
-<h3 id="reference-paper">Reference paper</h3>
+<h3 id="resources">Resources</h3>
 <ul>
 <li><a href="https://users.ece.cmu.edu/~jiyongj/papers/usenixsec13.pdf">Towards Automatic Software Lineage Inference</a>: Usenix Security 2013</li>
 </ul>
-<h2 id="edge-ml-device-project">Edge-ML device project</h2>
-<p>Google and Nvidia recently announced their new products to offload machine learning tasks to edge-based IoT computing devices. These devices are equipped with special computation units to accelerate machine learning workloads.
-While this creates new usage cases,  edge-ML also bring new opportunities and threats at once. Edge-ML provides new ways of implementing security solutions or exposes new attack surface for the adversaries to take over.</p>
-<ul>
-<li><a href="https://developer.nvidia.com/embedded/jetson-nano-developer-kit">Nvidia Jetson nano board</a></li>
-<li><a href="https://cloud.google.com/edge-tpu/">Google Edge TPU processing board</a></li>
-</ul>
-<p><img alt="" src="https://augmentedstartups.com/wp-content/uploads/2019/06/AI_Board_Fig01_a0f5afa5c01d296dc09d895c8d933997_2000.png" /></p>
-<p>If you choose this project, you will provide you edge-ML devices. </p>
-<h3 id="project-direction-1-build-your-own-security-application-using-edge-ml-device">Project direction 1: Build your own security application using Edge-ML device</h3>
-<p>With new device and its new capability, students can be wild and creative to propose a new security application. For instance, why don&rsquo;t write an security application that monitors your backyard?
-Note that edge-ML devices are specialized for image and data processing tasks.</p>
-<h3 id="project-direction-2-protecting-important-information-from-edge-ml-device">Project direction 2: Protecting important information from Edge-ML device</h3>
-<p>With new computation model that edge-ML device introduces, important intellectual assets such as prediction model will be offloaded and transferred to each edge devices.
-As it is to be deployed outside data center, edge-ML is exposed to the physical attack.</p>
-<p>For the project, students can think of ways to prevent such assets from being taken over by the adversary. Students needs to consider both runtime and offline aspects. You may consider to utilize <a href="">Trustzone</a> a security feature supported by ARM processor.</p>
-<hr />
 <h2 id="improvement-for-automated-large-scale-malware-analysis-study">Improvement for Automated Large-scale Malware Analysis Study</h2>
 <p>Recently, we observe millions of allegedly payloads are found and reported daily, and this phenomenon pushes the task of manual investigation and analysis nearly infeasible. Industry and academia together have proposed and worked on an automated framework to scale process and analyze malware payloads by implemented automated security sandbox for security and malware analysis. Such a proposal has improved the status, we as a community yet to see many pitfalls and limitation in replaying malware and capture the essence of malicious behavior. From this project, students will perform the following tasks..</p>
 <h3 id="project-direction-1-bridging-threat-intelligence">Project direction 1: Bridging Threat Intelligence</h3>
@@ -213,8 +199,9 @@ As it is to be deployed outside data center, edge-ML is exposed to the physical 
 <li>Build a mini-lab environment that would emulate a real-world enterprise environment.</li>
 <li>Implement and document a number of APT cases.</li>
 </ul>
-<p><img alt="" src="https://d1zq5d3dtjfcoj.cloudfront.net/base_network.png" /></p>
-<h3 id="resources">Resources</h3>
+<p><img alt="" src="https://d1zq5d3dtjfcoj.cloudfront.net/base_network.png" width="80%"/></p>
+
+<h3 id="resources_1">Resources</h3>
 <ul>
 <li>APT Notes - Github project: <a href="https://github.com/aptnotes/data">new repo</a>, <a href="https://github.com/kbandla/APTnotes">old repo</a></li>
 <li><a href="https://attackevals.mitre.org">APT3 scenario by MITRE</a></li>
@@ -239,8 +226,10 @@ For this project, students will</p>
 </li>
 <li>Define a standard workload to run and measure overhead, and usability.</li>
 </ul>
-<h2 id="automated-ioc-processing-to-produce-actionable-security-rules">Automated IOC processing to produce actionable security rules</h2>
-<p><em>Indicator of Compromise (IOC)</em> refers to an artifact observed on a network or in an operating system that, with high confidence, indicates a computer intrusion. While IOC transforms the game security by cultivating the smooth exchange of security indicators. To further facilitates security information exchange by addressing the complexity and hectic nature of such security information that we have observed with the existing protocol,  a number of different standards are proposed and work on progress (<a href="">STIX</a>). While these proposals attempt to address large portion of problem domain, still we have non-negligible rooms remain for improvements, for instance, many of important security IOCs are posted in a hard to parse not confirming to Internet standard. For instance, many security analysis are written in a plain English in a form of technical report, white-paper, or blog postings. </p>
+<h2 id="edge-ml-device-project">Edge-ML device project</h2>
+<p>Google and Nvidia recently announced their new products to offload machine learning tasks to edge-based IoT computing devicators. To further facilitates security information exchange by addressing the complexity and hectic nature of such security information that we have observed with the existing protocol,  a number of different standards are proposed and work on progress (<a href="">STIX</a>). While these proposals attempt to address large portion of problem domain, still we have non-negligible rooms remain for improvements, for instance, many of important security IOCs are posted in a hard to parse not confirming to Internet standard. For instance, many security analysis are written in a plain English in a form of technical report, white-paper, or blog postings. </p>
+<p><img alt="What is Conntrack?" src="https://augmentedstartups.com/wp-content/uploads/2019/06/AI_Board_Fig01_a0f5afa5c01d296dc09d895c8d933997_2000.png" width="85%"/></p>
+
 <h3 id="goal-and-problem-statement">Goal and Problem Statement</h3>
 <ul>
 <li><em>Threat intelligence</em> is knowledge that allows you to prevent or mitigate cyber-attacks.</li>
@@ -265,23 +254,29 @@ For this project, students will</p>
 <li>can we automate the process?</li>
 </ul>
 <p>From this project, student will attempts to parse malformed security indicators into STIX or TAXI compatible formation, so as it can be properly translated into standard IOC format and further circulated.  </p>
-<h3 id="resources_1">Resources</h3>
+<h3 id="resources_2">Resources</h3>
 <ul>
 <li><a href="https://oasis-open.github.io/cti-documentation/stix/intro">Introduction to STIX</a></li>
 <li><a href="https://opencti-platform.github.io/docs/getting-started/introduction">OpenCTI</a></li>
 </ul>
 <h2 id="conntrack-visualizer">Conntrack Visualizer</h2>
-<p><img alt="" src="https://pbs.twimg.com/media/DrK2undX0AAzH1S.jpg" />
-* <a href="http://conntrack-tools.netfilter.org">conntrack-tools</a></p>
-<p>All of your connections are accessible from your kernel (even ones that you don&rsquo;t know of!). Can you build a visualizer?</p>
-<p><img alt="" src="https://i.imgur.com/RXhtJxq.png" /></p>
+<p>What is Conntrack?</p>
+<p><img alt="What is Conntrack?" src="https://pbs.twimg.com/media/DrK2undX0AAzH1S.jpg" width="85%"/></p>
+
+<p>All of your connections are accessible from your kernel (even ones that you don&rsquo;t know of!). Can you make a service to visualize for all of Conntrack entries?</p>
+<p><img alt="Conntrack Visualization" src="https://i.imgur.com/RXhtJxq.png" width="85%"/></p>
+
+<h3 id="resources_3">Resources</h3>
+<ul>
+<li><a href="http://conntrack-tools.netfilter.org">conntrack-tools</a></li>
+</ul>
 <h2 id="steganography-or-image-forensics-analysis-and-defense-for-malicious-payload-embedded-documentation">Steganography or image forensics &ndash; Analysis and defense for malicious payload embedded documentation</h2>
 <p>Steganography has been a useful technique for the hacker community in embedding different types of malicious payloads into a seemingly benign document to evade security detection measures. This provides attacker an easy way to propagate their malicious payloads yet remain undetected by any security measure. When you see any databases or public resources for malware collections, you realize malware-embedded documents now take the majority. </p>
 <ul>
 <li><a href="https://zeltser.com/analyzing-malicious-documents/">Analyzing Malicious Documents Cheat Sheet</a></li>
-<li>https://www.youtube.com/watch?v=np0mPy-EHII</li>
+<li><a href="https://www.youtube.com/watch?v=np0mPy-EHII">Youtube clip</a></li>
 <li><a href="https://securityintelligence.com/steganography-a-safe-haven-for-malware/">Steganography: A Safe Haven for Malware</a></li>
-<li>https://books.google.com/books?hl=en&amp;lr=&amp;id=qMB9AiFUWF0C&amp;oi=fnd&amp;pg=PP1&amp;ots=glBaUv19cd&amp;sig=VrUI34kRvs67Lf7r7EMHNRbBtz0</li>
+<li><a href="https://books.google.com/books?hl=en&amp;lr=&amp;id=qMB9AiFUWF0C&amp;oi=fnd&amp;pg=PP1&amp;ots=glBaUv19cd&amp;sig=VrUI34kRvs67Lf7r7EMHNRbBtz0">Book on Steganography</a></li>
 <li><a href="https://dl.acm.org/citation.cfm?id=1774427">&lsquo;Dresden Image Database&rsquo; for benchmarking digital image forensics</a></li>
 </ul>
 <hr />

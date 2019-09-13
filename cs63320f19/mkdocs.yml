@@ -18,8 +18,8 @@ nav:
     - Papers: 'papers.md'
     - Projects: 'projects.md'
     - Assignments:
-       - quiz 01: 'quiz01.md'
-    # - Piazza: 'http://www.piazza.com'
+       - quiz 0x01: 'quiz01.md'
+       - assignment 0x01: 'assignment01.md'
 
 markdown_extensions:
     - toc

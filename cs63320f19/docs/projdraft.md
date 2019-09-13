@@ -24,8 +24,6 @@
 
 ### Project idea 2: A comparision study of different system call data collection frameworks
 
-* We it is previously mentioned, we have different data collection sources (Linux Audit, Sysdig, DTrace ...) that can run on a same system (say Linux). Students can try to build a same data collection framework for leveraging different mechanisms to  compare the efficency and capability. 
-
 * Project can start by 
     * Data collection implemented/configured to collection the same subset of system calls (e.g., read(), write(), exec(), fork(), send(), recve()) and run those against standardized workload (e.g., benchmark suites and workloads). 
 
