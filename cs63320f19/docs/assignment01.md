@@ -2,8 +2,7 @@
 
 ## Assignment set-up
 
-We  have a submission server (10.176.90.84) set-up for this assignment. Student will log-in with different accounts for different parts of assignment.
-From you host (Linux or OSX), use the following command to log-in to the submission server. We a same password for all accounts, the log-in password is `guest`.
+We have a submission server (10.176.90.84) set-up for this assignment. The student will log-in with different accounts for different parts of the assignment. From your host (Linux or OS X), use the following command to log-in to the submission server. We the same password for all accounts, the log-in password is `guest`.
 
 ```bash
 # For part 1
@@ -20,6 +19,13 @@ assign_0x1_p3@10.176.90.84 password:      # type in "guest"
 ...
 ```
 
+### Assignment binaries
+Assignment binaries are available for download. Download and study it from local machine first. Once you figure out how to solve, you can login to submission server to get flags for each part.
+
+* [assign_0x1_p1](http://cs6332.syssec.org/crackmes/assign_0x1_p1)
+* [assign_0x1_p2](http://cs6332.syssec.org/crackmes/assign_0x1_p2)
+* [assign_0x1_p3](http://cs6332.syssec.org/crackmes/assign_0x1_p3)
+
 ### Capturing the flag!
 
 Once you log into your system, you will see the files of the followings. 
@@ -31,7 +37,7 @@ total 24
 -r-xr-x--- 1 root assign_0x1_p1_pwn  424 Sep 20 05:34 solve
 ```
 
-For each part, the goal is to run *solve* to get your flag. 
+For each part, the goal is to run *solve* to get your flag.
 With the correct input to each part, you will get to run *solve*, and it will give you the following prompt. Which will ask you to provide your NetID and student ID.
 
 ```bash
@@ -313,6 +319,8 @@ NetID: <Your NetID>
 * Part 3
 <hash from /home/assign_0x1_p3/solve>
 ```
+
+**[Credit]**: Henry Wang has significantly contributed to improve the assignment.
 
 ----
 
