@@ -1,7 +1,6 @@
 
 # Tutorial for R2 + crackme0x00 
 
-
 ## Starting R2
 
 ```

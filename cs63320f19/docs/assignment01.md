@@ -2,46 +2,81 @@
 
 ## Assignment set-up
 
-### GDB Plug-in
+We  have a submission server (10.176.90.84) set-up for this assignment. Student will log-in with different accounts for different parts of assignment.
+From you host (Linux or OSX), use the following command to log-in to the submission server. We a same password for all accounts, the log-in password is `guest`.
+
+```bash
+# For part 1
+$ ssh -p 2222 assign_0x1_p1@10.176.90.84
+assign_0x1_p1@10.176.90.84 password:      # type in "guest"
+...
+# For part 2
+$ ssh -p 2222 assign_0x1_p2@10.176.90.84
+assign_0x1_p2@10.176.90.84 password:      # type in "guest"
+...
+# For part 3
+$ ssh -p 2222 assign_0x1_p3@10.176.90.84
+assign_0x1_p3@10.176.90.84 password:      # type in "guest"
+...
+```
+
+### Capturing the flag!
+
+Once you log into your system, you will see the files of the followings. 
+
+```bash
+assign_0x1_p1@cs6332-lab0:~$ ls -trl
+total 24
+-r-xr-sr-x 1 root assign_0x1_p1_pwn 7376 Sep 20 05:27 assign_0x1_p1
+-r-xr-x--- 1 root assign_0x1_p1_pwn  424 Sep 20 05:34 solve
+```
+
+For each part, the goal is to run *solve* to get your flag. 
+With the correct input to each part, you will get to run *solve*, and it will give you the following prompt. Which will ask you to provide your NetID and student ID.
+
+```bash
+Your NetID:
+kxj1234556
+Your student ID:
+25415
+Here is your answer hash: 19154be089a9f0cf7627a68bcfd1c26f
+```
+
+Your *student ID* will be gained by the following command. 
+```
+m=$(echo "kxj1234556" |md5sum |cut -d ' ' -f 1);echo "obase=10; ibase=16; ${m: -4}" |bc
+```
+
+As you solve different parts of the assignment, each part will produce different hashes.
+You can submit the hash values.
+
+###
+
+### GDB Plug-ins
+
+You can find [PEDA](http://ropshell.com/peda/) and [gef](https://gef.readthedocs.io).
+You can enable a plug-in by running the following commands from *GDB*.
+    
+    source /opt/gef/gef.py
+    source /opt/peda/peda.py
 
 In this document, I will use [PEDA](http://ropshell.com/peda/) GDB Plugin, to illustrate assignment details.
-
-    # install PEDA
-    $ git clone https://github.com/longld/peda.git ~/peda
-    $ echo "source ~/peda/peda.py" >> ~/.gdbinit
-
-You can also try to use more updated GDB plug-ins such as [gef](https://github.com/hugsy/gef), [pwndbg](https://github.com/pwndbg/pwndbg).
-
-### Disable Address Space Layout Randomization (ASLR)
-
-In this assignment (part2 and part3), you can need to disable ASLR. Use one of the following commands.
-
-    echo 0 | sudo tee /proc/sys/kernel/randomize_va_space
-
-or 
-
-    sudo sysctl -w kernel.randomize_va_space=0
-
-or 
-
-    setarch `uname -m` -R /bin/bash
-
-To open a new *bash* shell for you with ASLR disabled.
+You can also try to use more updated GDB plug-ins such as [pwndbg](https://github.com/pwndbg/pwndbg).
 
 ## Part 1 (4pt): Control flow hijacking
 
 ### Preparation ###
 
-Download *crackme0x00* from http://cs6332.syssec.org/crackmes/crackme0x00
+Download *assign_0x1_p1* from http://cs6332.syssec.org/crackmes/assign_0x1_p1
 
 ### Description ###
 
-In this assignment, we are going to hijack the control flow of *crackme0x00* binary
+In this assignment, we are going to hijack the control flow of *assign_0x1_p1* binary
 by overwriting the instruction pointer. As a first step, let's make it print
 out "Password OK :)" without providing correct answer to your question.
 
 ```
-$ objdump -d crackme0x00
+$ objdump -d assign_0x1_p1
 ...
     8048469:       e8 e2 fe ff ff          call   8048350 <strcmp@plt>
     804846e:       85 c0                   test   %eax,%eax
@@ -60,7 +95,7 @@ main function will return to `0x08048480` such that it prints out "Password OK :
 
 What happens if you provide a long string? Like below.
 
-    $ echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | ./crackme0x00
+    $ echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | ././assign_0x1_p1
     CS6332 Crackme Level 0x00
     Password: Invalid Password!
     Segmentation fault
@@ -71,15 +106,15 @@ fault:
 1. checking logging messages
 
         $ dmesg | tail -1
-        [237413.117757] crackme0x00[353]: segfault at 41414141 ip 0000000041414141 sp 00000000ff92aef0
+        [237413.117757] assign_0x1_p1[353]: segfault at 41414141 ip 0000000041414141 sp 00000000ff92aef0
         error 14 in libc-2.24.so[f7578000+1b3000]
 
 2. running gdb
 
         $ echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA > input
-        $ gdb ./crackme0x00
+        $ gdb ./assign_0x1_p1
         > run <input
-        Starting program: ./crackme0x00 <input
+        Starting program: ./assign_0x1_p1 <input
         CS6332 Crackme Level 0x00
         Password: Invalid Password!
 
@@ -93,8 +128,9 @@ fault:
 Let's figure out which input tainted the instruction pointer.
 
     $ echo AAAABBBBCCCCDDDDEEEEFFFFGGGGHHHHIIIIJJJJ > input
+    $ ./assign_0x1_p1 <input
     $ dmesg | tail -1
-    [238584.915883] crackme0x00[1095]: segfault at 48484848 ip 0000000048484848 sp 00000000ffc32f80
+    [238584.915883] assign_0x1_p1[1095]: segfault at 48484848 ip 0000000048484848 sp 00000000ffc32f80
     error 14 in libc-2.24.s
 
 What's the current instruction pointer? You might need this help:
@@ -104,7 +140,7 @@ What's the current instruction pointer? You might need this help:
 You can also figure out the exact shape of the stack frame by looking at
 the instructions as well.
 
-    $ objdump -d crackme0x00
+    $ r2 assign_0x1_p1
     ...
     8048414:       55                      push   %ebp
     8048415:       89 e5                   mov    %esp,%ebp
@@ -118,11 +154,42 @@ the instructions as well.
 
 <p><img alt="stack layout 2" src="https://i.imgur.com/9ZzeLOn.jpg" width="75%"/></p>  
 
+
+!!!Note
+    Successful control hijack will eventually run *system("/home/assign_0x1_p1/solve")*! Look inside the binary!
+
+The following is the disassembly of *assign_0x1_p1* binary.  
+
+    $ r2 assign_0x1_p1
+        ....
+    ┌ (fcn) main 136
+        ....
+    │           0x080485c2      e809feffff     sym.imp.strcmp ()           ; int strcmp(const char *s1, const char *s2)
+    │           0x080485c7      83c408         esp += 8
+    │           0x080485ca      85c0           var = eax & eax
+    │       ┌─< 0x080485cc      751c           if (var) goto 0x80485ea
+    │       │   0x080485ce      68ac860408     push str.Password_OK_:      ; 0x80486ac ; "Password OK :)"
+    │       │   0x080485d3      e838feffff     sym.imp.puts ()             ; int puts(const char *s)
+    │       │   0x080485d8      83c404         esp += 4
+    │       │   0x080485db      68bb860408     push str.home_assign_0x1_p1_solve ; 0x80486bb ; "/home/assign_0x1_p1/solve"
+    │       │   0x080485e0      e83bfeffff     sym.imp.system ()           ; int system(const char *string)
+    │       │   0x080485e5      83c404         esp += 4
+    │      ┌──< 0x080485e8      eb0d           goto 0x80485f7
+    │      ││      ; JMP XREF from 0x080485cc (main)
+    │      │└─> 0x080485ea      68d5860408     push str.Invalid_Password   ; 0x80486d5 ; "Invalid Password!"
+    │      │    0x080485ef      e81cfeffff     sym.imp.puts ()             ; int puts(const char *s)
+    │      │    0x080485f4      83c404         esp += 4
+    │      │       ; JMP XREF from 0x080485e8 (main)
+    │      └──> 0x080485f7      b800000000     eax = 0
+    │           0x080485fc      c9
+    └           0x080485fd      c3             return 0
+
+
 ### Output to submit
 
 Save your attack payload to `input1`. The expected running example would be like the following.
 
-    $ cat input1 | ./crackme0x00
+    $ cat input1 | ./assign_0x1_p1
     CS6332 Crackme Level 00
     Password: Invalid Password!
     Password OK :)
@@ -133,10 +200,10 @@ Save your attack payload to `input1`. The expected running example would be like
 
 ### Preparation
 
-For this part, we will use *crackme0x00* binary again. Download *crackme0x00* from http://cs6332.syssec.org/crackmes/crackme0x00 and check its binary to ensure stack section (*GNU_STACK*) is in `RW` permission which mean you can overwrite a stack, but cannot run any code from there.
+For this part, we will use *assign_0x1_p1* binary again. Download *assign_0x1_p1* from http://cs6332.syssec.org/crackmes/assign_0x1_p1 and check its binary to ensure stack section (*GNU_STACK*) is in `RW` permission which mean you can overwrite a stack, but cannot run any code from there.
 
 ```
-$ readelf -W -l ./crackme0x00|grep STACK
+$ readelf -W -l ./assign_0x1_p2|grep STACK
   GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4
 ```
 
@@ -170,7 +237,7 @@ kjee
 * GDB (Peda) will the address of *system()* at runtime. 
 
 ```
-$ gdb  crackme0x00
+$ gdb  assign_0x1_p2
 gdb-peda$ b main
 gdb-peda$ run
 ...
@@ -185,20 +252,21 @@ $1 = {<text variable, no debug info>} 0xf7e26d10 <system>
 
 Save your attack payload to `input2`. The expected running example would be like the following. You will pretend *env -i*, so as for the stack layout to be more deterministic.
 
-    $ cat input2 | env -i ./crackme0x00
+    $ cat input2 | env -i ./assign_0x1_p2
     CS6332 Crackme Level 00
     Password: Invalid Password!
-    $ whoami
-    kjee
+    ....
+    $ sh ./solve
+    ....
 
-## Part 3 (8 piont): Jump Shellcode
+## Part 3 (8 piont): Jump to your own shellcode
 
-### Prepration
+### Preparation
 
-Download *crackme0x00-nonx* from http://cs6332.syssec.org/crackmes/crackme0x00-nonx and check its binary to ensure stack section (*GNU_STACK*) is in `RWE` permission which mean you can write and run a shellcode snippet from stack.
+Download *assign_0x1_p3* from http://cs6332.syssec.org/crackmes/assign_0x1_p3 and check its binary to ensure stack section (*GNU_STACK*) is in `RWE` permission which mean you can write and run a shellcode snippet from stack.
 
 ```
-$ readelf -W -l ./crackme0x00-nonx|grep STACK
+$ readelf -W -l ./assign_0x1_p3|grep STACK
   GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RWE 0x10
 ```
 
@@ -211,7 +279,7 @@ Check shellcode length, and make sure shellcode should fit in to stack.
 Let's see we have enough space in stack.
 
 ```
-$ objdump -j .text -d crackme0x00-nonx
+$ objdump -j .text -d assign_0x1_p3
 ...
 5bc:	83 ec 20             	sub    $0x30,%esp
 ...
@@ -223,16 +291,27 @@ Create an input that would run *shellcode* and subsequently give */bin/sh* promp
 
 Save your attack payload to `input2`. The expected running example would be like the following. You will pretend *env -i*, so as for stack layout to be more deterministic.
 
-    $ cat input3 | env -i ./crackme0x00-nonx
+    $ cat input3 | env -i ./assign_0x1_p3
     CS6332 Crackme Level 00
     Password: Invalid Password!
-    $ whoami
-    kjee
+    ...
+    $ sh ./solve
+    ....
 
 ## Submission
 
+Submit a file with following entries.
+
 ```bash
-tar czvf <your-netid>.tgz input1 input2 input3
+NetID: <Your NetID>
+* Part 1
+<hash from /home/assign_0x1_p1/solve>
+
+* Part 2
+<hash from /home/assign_0x1_p2/solve>
+
+* Part 3
+<hash from /home/assign_0x1_p3/solve>
 ```
 
 ----

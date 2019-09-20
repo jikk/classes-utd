@@ -21,7 +21,8 @@ Traditional syscall-level monitoring is limited, since system call sequences do 
 The existing solution gets this implement by installing a kernel module to define the association between the process to mbuf, which later be transferred to the user-level agent. The approach turns out to be too intrusive affecting the system stability. The user also needs to re-install kernel modules for every system update.
 The project will implement the process-DNS association much lighter fashion by associating two information sources available at user-level. The one is network system call (i.e., send(), recv()) trace and the other is PCAP data.
 
-![](https://i.imgur.com/Q9Cy6Yt.jpg =100x)
+<p><img alt="PDNS diagram" src="https://i.imgur.com/Q9Cy6Yt.jpg" width="65%"/></p>  
+<br>
 
 ### Project direction 3: Collect system data for high-level security analytic
 
@@ -65,7 +66,7 @@ While this creates new usage cases,  edge-ML also bring new opportunities and th
 * [Nvidia Jetson nano board](https://developer.nvidia.com/embedded/jetson-nano-developer-kit)
 * [Google Edge TPU processing board](https://cloud.google.com/edge-tpu/)
 
-![](https://augmentedstartups.com/wp-content/uploads/2019/06/AI_Board_Fig01_a0f5afa5c01d296dc09d895c8d933997_2000.png)
+<p><img alt="Edge TPU" src="https://augmentedstartups.com/wp-content/uploads/2019/06/AI_Board_Fig01_a0f5afa5c01d296dc09d895c8d933997_2000.png" width="75%"/></p>
 
  If you choose this project, you will provide you edge-ML devices. 
 
@@ -111,7 +112,7 @@ More research and industry together focuses on Advanced Persistent Threat (APT) 
 * Build a mini-lab environment that would emulate a real-world enterprise environment.
 * Implement and document a number of APT cases.
 
-![](https://d1zq5d3dtjfcoj.cloudfront.net/base_network.png)
+<p><img alt="" src="https://d1zq5d3dtjfcoj.cloudfront.net/base_network.png" width="80%"/></p>
 
 ### Resources
 
@@ -164,12 +165,17 @@ From this project, student will attempts to parse malformed security indicators 
 
 ## Conntrack Visualizer
 
-![](https://pbs.twimg.com/media/DrK2undX0AAzH1S.jpg)
+What is Conntrack?
+
+<p><img alt="What is Conntrack?" src="https://pbs.twimg.com/media/DrK2undX0AAzH1S.jpg" width="85%"/></p> 
+
+All of your connections are accessible from your kernel (even ones that you don't know of!). Can you make a service to visualize for all of Conntrack entries?
+
+<p><img alt="Conntrack Visualization" src="https://i.imgur.com/RXhtJxq.png" width="85%"/></p> 
+
+### Resources 
+
 * [conntrack-tools](http://conntrack-tools.netfilter.org)
-
-All of your connections are accessible from your kernel (even ones that you don't know of!). Can you build a visualizer?
-
-![](https://i.imgur.com/RXhtJxq.png)
 
 
 ## Steganography or image forensics -- Analysis and defense for malicious payload embedded documentation

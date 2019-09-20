@@ -25,6 +25,9 @@ markdown_extensions:
     - toc
     - smarty
     - admonition
+    # admonition example
+    # !!! note
+    #     This is a notice!
 # macros    
 extra:
     course:
