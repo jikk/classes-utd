@@ -20,13 +20,14 @@ assign_0x1_p3@10.176.90.84 password:      # type in "guest"
 ```
 
 ### Assignment binaries
-Assignment binaries are available for download. Download and study it from local machine first. Once you figure out how to solve, you can login to submission server to get flags for each part.
+
+Assignment binaries are available for download. Download and study it from a local machine first. Once you figure out how to solve, you can log in to the submission server to get flags for each part.
 
 * [assign_0x1_p1](http://cs6332.syssec.org/crackmes/assign_0x1_p1)
 * [assign_0x1_p2](http://cs6332.syssec.org/crackmes/assign_0x1_p2)
 * [assign_0x1_p3](http://cs6332.syssec.org/crackmes/assign_0x1_p3)
 
-### Capturing the flag!
+### Capturing the flag
 
 Once you log into your system, you will see the files of the followings. 
 
@@ -50,13 +51,11 @@ Here is your answer hash: 19154be089a9f0cf7627a68bcfd1c26f
 
 Your *student ID* will be gained by the following command. 
 ```
-m=$(echo "kxj1234556" |md5sum |cut -d ' ' -f 1);echo "obase=10; ibase=16; ${m: -4}" |bc
+m=$(echo "kxj1234556" |md5sum |cut -d ' ' -f 1)|tr '[:lower:]' '[:upper:]';echo "obase=10; ibase=16; ${m: -4}" |bc
 ```
 
 As you solve different parts of the assignment, each part will produce different hashes.
 You can submit the hash values.
-
-###
 
 ### GDB Plug-ins
 
@@ -71,11 +70,11 @@ You can also try to use more updated GDB plug-ins such as [pwndbg](https://githu
 
 ## Part 1 (4pt): Control flow hijacking
 
-### Preparation ###
+### Preparation
 
 Download *assign_0x1_p1* from http://cs6332.syssec.org/crackmes/assign_0x1_p1
 
-### Description ###
+### Description
 
 In this assignment, we are going to hijack the control flow of *assign_0x1_p1* binary
 by overwriting the instruction pointer. As a first step, let's make it print
@@ -242,7 +241,7 @@ kjee
 
 * GDB (Peda) will the address of *system()* at runtime. 
 
-```
+```sh
 $ gdb  assign_0x1_p2
 gdb-peda$ b main
 gdb-peda$ run

@@ -15,7 +15,9 @@ nav:
     #      - 'index.md'
     - General: 'general.md'
     - Schedule: 'schedule.md'
-    - Papers: 'papers.md'
+    - Papers: 
+        - Paper List: 'papers.md'
+        - Paper Assignment: 'paper-assignment.md'
     - Projects: 'projects.md'
     - Assignments:
        - quiz 0x01: 'quiz01.md'
