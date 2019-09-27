@@ -2,7 +2,7 @@
 
 ## Assignment set-up
 
-We have a submission server (10.176.90.84) set-up for this assignment. The student will log-in with different accounts for different parts of the assignment. From your host (Linux or OS X), use the following command to log-in to the submission server. We the same password for all accounts, the log-in password is `guest`.
+We have a submission server (10.176.90.84) set-up for this assignment. The student will log-in with different accounts for different parts of the assignment. From your host (Linux or OS X), use the following command to log-in to the submission server. We the same password for all accounts, the log-in password is `guest`. You can use ssh client program (e.g., [putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/)) for Windows machine.
 
 ```bash
 # For part 1
@@ -35,38 +35,38 @@ Once you log into your system, you will see the files of the followings.
 assign_0x1_p1@cs6332-lab0:~$ ls -trl
 total 24
 -r-xr-sr-x 1 root assign_0x1_p1_pwn 7376 Sep 20 05:27 assign_0x1_p1
+-rw-r--r-- 1 root root              1761 Sep 26 08:58 README
 -r-xr-x--- 1 root assign_0x1_p1_pwn  424 Sep 20 05:34 solve
 ```
 
-For each part, the goal is to run *solve* to get your flag.
-With the correct input to each part, you will get to run *solve*, and it will give you the following prompt. Which will ask you to provide your NetID and student ID.
+For each part, the goal is to run *solve* to get your flag (hash value).
+With the correct input that exploits each part, you will get to run *solve*, and it will give you the following prompt, which asks you to provide your NetID.
 
 ```bash
 Your NetID:
 kxj1234556
+Congratulations!
 Here is your answer hash: 19154be089a9f0cf7627a68bcfd1c26f
 ```
 
-As you solve different parts of the assignment, each part will produce different hashes.
-You can submit the hash values along with your exploit inputs.
+As you solve different parts of the assignment, each part will generate different hashes.
+You can submit the hash values along with your inputs.
 
-### GDB Plug-ins
+### Radare2 disassembler and GDB Plug-ins
 
-You can find [PEDA](http://ropshell.com/peda/) and [gef](https://gef.readthedocs.io).
-You can enable a plug-in by running the following commands from *GDB*.
+[PEDA](http://ropshell.com/peda/) and [gef](https://gef.readthedocs.io) are installed to the submission server.
+You can load plug-ins by running the following commands from *GDB* prompt.
     
     source /opt/gef/gef.py
     source /opt/peda/peda.py
 
-In this document, I will use [PEDA](http://ropshell.com/peda/) GDB Plugin to illustrate assignment details.
-You can also try to use more updated GDB plug-ins such as [pwndbg](https://github.com/pwndbg/pwndbg).
+We also installed Radare2 to the submission host, but we recommend you to study assignment binary thoroughly from your own host first, before you try payloads from submission server. In this document, I will use [PEDA](http://ropshell.com/peda/) GDB Plugin to illustrate assignment details.
 
 ## Part 1 (4pt): Control flow hijacking
 
 ### Preparation
 
-Download [*assign_0x1_p1*](http://cs6332.syssec.org/crackmes/assign_0x1_p1) to your local (Linux) host to analyze first.
-Once you get ready, you can login to your submission server to confirm your input and get your hash value.
+Download [*assign_0x1_p1*](http://cs6332.syssec.org/crackmes/assign_0x1_p1) to your local (Linux) host to analyze first. Once you get ready, you can login to your submission server to confirm your input and get your hash value.
 
 ### Description
 
@@ -77,24 +77,33 @@ out "Password OK :)" without providing correct answer to your question.
 ```
 $ objdump -d assign_0x1_p1
 ...
-    8048469:       e8 e2 fe ff ff          call   8048350 <strcmp@plt>
-    804846e:       85 c0                   test   %eax,%eax
-    8048470:       74 0e                   je     8048480 <main+0x6c>
-    8048472:       c7 04 24 96 85 04 08    movl   $0x8048596,(%esp)
-    8048479:       e8 c2 fe ff ff          call   8048340 <printf@plt>
-    804847e:       eb 0c                   jmp    804848c <main+0x78>
- -> 8048480:       c7 04 24 a9 85 04 08    movl   $0x80485a9,(%esp)
-    8048487:       e8 b4 fe ff ff          call   8048340 <printf@plt>
-    804848c:       b8 00 00 00 00          mov    $0x0,%eax
-    8048491:       c9                      leave
-    8048492:       c3                      ret
+    80485ad:	e8 fe fd ff ff       	call   80483b0 <strcmp@plt>
+    80485b2:	83 c4 08             	add    $0x8,%esp
+    80485b5:	85 c0                	test   %eax,%eax
+    80485b7:	75 1c                	jne    80485d5 <main+0x7f>
+    80485b9:	68 9c 86 04 08       	push   $0x804869c
+ -> 80485be:	e8 1d fe ff ff       	call   80483e0 <puts@plt>
+    80485c3:	83 c4 04             	add    $0x4,%esp
+    80485c6:	68 ab 86 04 08       	push   $0x80486ab
+    80485cb:	e8 20 fe ff ff       	call   80483f0 <system@plt>
+    80485d0:	83 c4 04             	add    $0x4,%esp
+    80485d3:	eb 0d                	jmp    80485e2 <main+0x8c>
+    80485d5:	68 c5 86 04 08       	push   $0x80486c5
+    80485da:	e8 01 fe ff ff       	call   80483e0 <puts@plt>
+    80485df:	83 c4 04             	add    $0x4,%esp
+    80485e2:	b8 00 00 00 00       	mov    $0x0,%eax
+    80485e7:	c9                   	leave
+    80485e8:	c3                   	ret
 ```
 
-main function will return to `0x8048480` such that it prints out "Password OK :)". Which characters in input should be changed to 0x08048480? Let me remind you that x86 is a little-endian machine.
+!!!Note
+    Upon a successful control hijack will eventually call *system()* function. Try to figure out its argument!
+
+Please craft your input to overflow stack and overwrite RIP so that main function will return to `0x80485be`, subsequently prints out "Password OK :)".
 
 What happens if you provide a long string? Like below.
 
-    $ echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | ././assign_0x1_p1
+    $ echo AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA | ./assign_0x1_p1
     CS6332 Crackme Level 0x00
     Password: Invalid Password!
     Segmentation fault
@@ -120,7 +129,11 @@ fault:
         Program received signal SIGSEGV, Segmentation fault.
         0x41414141 in ?? ()
 
+The following diagram illustrates the state of stack.
+
  <p><img alt="stack layout 1" src="https://i.imgur.com/T6x4QNn.jpg" width="75%"/></p>  
+
+Which portion of string in input should be changed to `0x80485be`? 
 
 ### Control EIP ###
 
@@ -132,11 +145,11 @@ Let's figure out which input tainted the instruction pointer.
     [238584.915883] assign_0x1_p1[1095]: segfault at 48484848 ip 0000000048484848 sp 00000000ffc32f80
     error 14 in libc-2.24.s
 
-What's the current instruction pointer? You might want to lookup ascii table:
+What's the current instruction pointer (ip)? You can see that CPU was trying to instruction and 0x48484848, and is seg-faulted.  To figure out what does 0x48 translate to. You can lookup ascii table:
 
     $ man ascii
 
-or from GDB, run the following
+or from GDB, run the following to print the character.
 
     gdb-peda$ printf "%c\n", 0x48 
 
@@ -147,45 +160,18 @@ the instructions as well.
     ...
     8048414:       55                      push   %ebp
     8048415:       89 e5                   mov    %esp,%ebp
-    8048417:       83 ec 28                sub    $0x28,%esp
+    8048417:       83 ec 28                sub    $0x14,%esp
     ...
-    8048448:       8d 45 e8                lea    -0x18(%ebp),%eax
-    804844b:       89 44 24 04             mov    %eax,0x4(%esp)
-    804844f:       c7 04 24 8c 85 04 08    movl   $0x804858c,(%esp)
-    8048456:       e8 d5 fe ff ff          call   8048330 <scanf@plt>
+    804858c:	   83 c4 04                add    $0x4,%esp
+    804858f:	   8d 45 ec                lea    -0x14(%ebp),%eax
+    8048592:	   50                      push   %eax
+    8048593:	   68 92 86 04 08          push   $0x8048692
+    8048598:	   e8 63 fe ff ff          call   8048400 <scanf@plt>
     ...
+
+The following diagram illustrates the state of stack.
 
 <p><img alt="stack layout 2" src="https://i.imgur.com/9ZzeLOn.jpg" width="75%"/></p>  
-
-
-!!!Note
-    Successful control hijack will eventually run *system("/home/assign_0x1_p1/solve")*! Look inside the binary!
-
-The following is the disassembly of *assign_0x1_p1* binary.  
-
-    $ r2 assign_0x1_p1
-        ....
-    ┌ (fcn) main 136
-        ....
-    │           0x080485c2      e809feffff     sym.imp.strcmp ()           ; int strcmp(const char *s1, const char *s2)
-    │           0x080485c7      83c408         esp += 8
-    │           0x080485ca      85c0           var = eax & eax
-    │       ┌─< 0x080485cc      751c           if (var) goto 0x80485ea
-    │       │   0x080485ce      68ac860408     push str.Password_OK_:      ; 0x80486ac ; "Password OK :)"
-    │       │   0x080485d3      e838feffff     sym.imp.puts ()             ; int puts(const char *s)
-    │       │   0x080485d8      83c404         esp += 4
-    │       │   0x080485db      68bb860408     push str.home_assign_0x1_p1_solve ; 0x80486bb ; "/home/assign_0x1_p1/solve"
-    │       │   0x080485e0      e83bfeffff     sym.imp.system ()           ; int system(const char *string)
-    │       │   0x080485e5      83c404         esp += 4
-    │      ┌──< 0x080485e8      eb0d           goto 0x80485f7
-    │      ││      ; JMP XREF from 0x080485cc (main)
-    │      │└─> 0x080485ea      68d5860408     push str.Invalid_Password   ; 0x80486d5 ; "Invalid Password!"
-    │      │    0x080485ef      e81cfeffff     sym.imp.puts ()             ; int puts(const char *s)
-    │      │    0x080485f4      83c404         esp += 4
-    │      │       ; JMP XREF from 0x080485e8 (main)
-    │      └──> 0x080485f7      b800000000     eax = 0
-    │           0x080485fc      c9
-    └           0x080485fd      c3             return 0
 
 ### Output to submit
 
@@ -279,7 +265,7 @@ $ readelf -W -l ./assign_0x1_p3|grep STACK
 
 ### Description
 
-From this part of the assignment, you can still hijack the control by overwriting the return address, but you don’t know where to transfer the control, to run the desired command (say */bin/sh*) using*system()* function provided by Glibc library. For its usage, please check out `man -s 3 system`.
+From this part of the assignment, you can still hijack the control by overwriting the return address, but you don’t know where to transfer the control, to run the desired command (say */bin/sh*) using *system()* function provided by Glibc library. For its usage, please check out `man -s 3 system`.
 
 Please write an input that would overwrite the return address of main() and transfer the control aa *main()* function returns. You need to craft your payload to call *system()* having a string (*/bin/sh*) as the first function argument.
 
@@ -304,7 +290,7 @@ assign_0x1_p3
 
 ### Getting addresses of necessary ingredients.
 
-* GDB (Peda) will the address of *system()* at runtime.
+Using GDB, you can easily find the address of *system()*.
 
 ```sh
 $ gdb  assign_0x1_p3
@@ -317,6 +303,7 @@ $1 = {<text variable, no debug info>} 0xf7e26d10 <system>
 ```
 
 `0xf7e26d10` is address that you want to return to run the function.
+Then as a next step, you need to think about how to pass the argument to the function.
 
 ### Output to submit
 
@@ -334,13 +321,38 @@ Submit a file with following entries.
 
 ```bash
 NetID: <Your NetID>
-* Part 1
+
+Part 1
+------
+
+* Input
+
+<input for part1>
+
+* Hash
+
 <hash from /home/assign_0x1_p1/solve>
 
-* Part 2
+Part 2
+------
+
+* Input
+
+<input for part1>
+
+* Hash
+
 <hash from /home/assign_0x1_p2/solve>
 
-* Part 3
+Part 3
+------
+
+* Input
+
+<input for part1>
+
+* Hash
+
 <hash from /home/assign_0x1_p3/solve>
 ```
 
