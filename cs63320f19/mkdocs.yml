@@ -22,6 +22,7 @@ nav:
     - Assignments:
        - quiz 0x01: 'quiz01.md'
        - assignment 0x01: 'assignment01.md'
+       - assignment 0x02: 'assignment02.md'
 
 markdown_extensions:
     - toc
